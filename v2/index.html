@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Vape City — Kennesaw, GA · Smoke · Vape · CBD · 21+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Barlow:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@1,500&amp;display=swap">
+<link rel="preload" as="image" href="../assets/the-customer-wide.webp" media="(min-width: 700px)">
+<link rel="preload" as="image" href="../assets/the-customer.png" media="(max-width: 699px)">
+<script src="../image-slot.js"></script>
+<style>
+@font-face { font-family: 'Sin City'; src: url('../fonts/SinCity.ttf') format('truetype'); font-display: swap; }
+html, body { margin: 0; background: #070707; color: #ebe7e1; -webkit-text-size-adjust: 100%; }
+* { box-sizing: border-box; }
+a { color: #ebe7e1; }
+a:hover { color: #d42a20; }
+::selection { background: #d42a20; color: #fff; }
+input, textarea, button, select { font: inherit; }
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;background:#070707;color:#ebe7e1;font-family:Barlow, 'Helvetica Neue', Helvetica, sans-serif;font-size:17px;line-height:1.55">
+<canvas ref="{{ rainRef }}" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;display:block"></canvas>
+
+<div style="background:#000;color:#a8a39c;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;padding:8px 14px;text-align:center;text-wrap:balance;border-bottom:1px solid rgba(255,255,255,0.08)">The rain's free · Everything else, bring ID · 21+ only</div>
+
+<nav aria-label="Main" style="position:sticky;top:0;z-index:20;background:rgba(7,7,7,0.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:18px;padding:0 clamp(14px, 3vw, 40px);height:62px">
+  <a href="#top" onClick="{{ go.top }}" aria-label="Vape City home" style="flex:none;text-decoration:none;color:#d42a20;font-family:'Sin City', Impact, sans-serif;font-size:26px;line-height:1;transform:rotate(-4deg);display:block">VAPE CITY</a>
+  <div style="flex:1;min-width:0;overflow-x:auto;display:flex;justify-content:flex-end;gap:2px;scrollbar-width:none">
+    <a href="#shop" onClick="{{ go.shop }}" style="flex:none;color:#ebe7e1;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 11px" style-hover="color:#d42a20">Shop</a>
+    <a href="#deals" onClick="{{ go.deals }}" style="flex:none;color:#ebe7e1;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 11px" style-hover="color:#d42a20">Deals</a>
+    <a href="#about" onClick="{{ go.about }}" style="flex:none;color:#ebe7e1;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 11px" style-hover="color:#d42a20">About</a>
+    <a href="#visit" onClick="{{ go.visit }}" style="flex:none;color:#ebe7e1;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 11px" style-hover="color:#d42a20">Visit</a>
+    <a href="#contact" onClick="{{ go.contact }}" style="flex:none;color:#ebe7e1;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;padding:14px 11px" style-hover="color:#d42a20">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+<section data-screen-label="Home" aria-label="Vape City" style="position:relative;height:clamp(580px, 56.25vw, calc(100vh - 96px));overflow:hidden;background:#050505">
+  <picture><source media="(min-width: 700px)" srcset="../assets/the-customer-wide.webp" type="image/webp"><img src="../assets/the-customer.png" alt="A woman in a red dress smoking on a rain-soaked balcony above the city at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ heroPos }} 50%;display:block"></picture>
+  <canvas ref="{{ smokeRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"></canvas>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 58%, rgba(0,0,0,0.88) 100%), radial-gradient(ellipse at 45% 42%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%)"></div>
+  <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(22px, 4.5vw, 60px)">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:18px">
+      <h1 aria-label="Ian Alderige's Vape City" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:clamp(44px, 8.5vw, 150px);line-height:0.9;margin-top:0.12em;letter-spacing:-0.01em;text-shadow:6px 6px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.17em;line-height:1;letter-spacing:0.02em;text-shadow:2px 2px 0 #000;margin-bottom:1.3em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </h1>
+      <p style="margin:0;max-width:340px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:clamp(19px, 2vw, 23px);line-height:1.35;color:#ebe7e1;text-shadow:0 1px 12px rgba(0,0,0,0.9);text-wrap:pretty">Everything for vape and smoke, under one roof in Kennesaw.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.16em;text-transform:uppercase;color:#ebe7e1">
+          <span style="width:8px;height:8px;border-radius:50%;flex:none;background:{{ statusDot }};box-shadow:0 0 10px {{ statusDot }}"></span>
+          <span>{{ openLine }}</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="#shop" onClick="{{ go.shop }}" style="display:inline-flex;align-items:center;min-height:52px;padding:12px 26px;background:#d42a20;color:#fff;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:17px;letter-spacing:0.18em;text-transform:uppercase;transition:background .25s" style-hover="background:#b0201a;color:#fff">Shop the city</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3895%20Cherokee%20St%20NW%20Ste%20330%2C%20Kennesaw%2C%20GA%2030144" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:52px;padding:12px 26px;background:rgba(0,0,0,0.4);color:#ebe7e1;border:1px solid rgba(235,231,225,0.5);text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:17px;letter-spacing:0.18em;text-transform:uppercase;transition:border-color .25s" style-hover="border-color:#ebe7e1;color:#fff">Get directions</a>
+        </div>
+      </div>
+      <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:rgba(0,0,0,0.45);border:1px solid rgba(235,231,225,0.25);color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
+        <span style="position:relative;width:40px;height:22px;border-radius:11px;flex:none;background:{{ trackBg }};transition:background .25s"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;border-radius:50%;background:#ebe7e1;transition:left .25s"></span></span>
+        <span style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:17px;line-height:1.25">{{ rainLine }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Hours, address, phone" style="border-bottom:1px solid rgba(255,255,255,0.1);background:#0b0b0b">
+  <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr))">
+    <div style="padding:28px clamp(18px, 4vw, 40px);display:flex;flex-direction:column;gap:6px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Hours</div>
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:22px;line-height:1.3;letter-spacing:0.04em">Mon–Fri 10am–8pm<br>Sat–Sun 12pm–8pm</div>
+    </div>
+    <div style="padding:28px clamp(18px, 4vw, 40px);display:flex;flex-direction:column;gap:6px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Address</div>
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:22px;line-height:1.3;letter-spacing:0.04em">3895 Cherokee St NW, Ste 330<br>Kennesaw, GA 30144</div>
+    </div>
+    <div style="padding:28px clamp(18px, 4vw, 40px);display:flex;flex-direction:column;gap:6px">
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Phone</div>
+      <a href="tel:+16784027463" style="font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:30px;line-height:1.1;letter-spacing:0.04em;text-decoration:none">(678) 402-7463</a>
+      <div style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-size:17px;color:#a8a39c">Call before you drive. I pick up.</div>
+    </div>
+  </div>
+</section>
+
+<section id="shop" data-screen-label="Shop" aria-labelledby="h-shop" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) 0;display:flex;flex-direction:column;gap:44px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:44px;height:2px;background:#d42a20"></div>
+    <h2 id="h-shop" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Shop by category</h2>
+    <p style="margin:0;max-width:560px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.4;color:#c9c4bd;text-wrap:pretty">Seven aisles. No maze. If it's not on the shelf, ask.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-vapes" src="../assets/cat-vapes.jpg" shape="rect" placeholder="Product photo — vapes &amp; disposables"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">01</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Vapes &amp; Disposables</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Pocket-size. No fuss. Rechargeables and disposables, restocked before they run dry.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-eliquids" src="../assets/cat-eliquids.jpg" shape="rect" placeholder="Product photo — e-liquids"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">02</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">E-Liquids</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Freebase and salts, every strength on the shelf. Tell me what you like. I'll tell you what's in.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-glass" src="../assets/cat-glass.jpg" shape="rect" placeholder="Product photo — glass"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">03</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Glass</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Pipes, bubblers, rigs. Built heavy. Handle it like it's the last one in town.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-papers" src="../assets/cat-papers.jpg" shape="rect" placeholder="Product photo — papers &amp; wraps"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">04</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Papers &amp; Wraps</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Papers, cones, wraps, tips. The small stuff that runs the whole operation.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-hookah" src="../assets/cat-hookah.jpg" shape="rect" placeholder="Product photo — hookah"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">05</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Hookah</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Hookahs, bowls, hoses, coals, shisha. For long nights that don't go anywhere.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-cbd" src="../assets/cat-cbd.jpg" shape="rect" placeholder="Product photo — CBD / Delta-8 / Kratom"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">06 · Where legal · 21+</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">CBD · Delta-8 · Kratom</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Only what Georgia law allows. Stock changes. Ask at the counter — straight answers only.</p></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-accessories" src="../assets/cat-accessories.jpg" shape="rect" placeholder="Product photo — accessories"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">07</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Accessories</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Lighters, grinders, cases, scales, batteries. The stuff you forget until you need it.</p></div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="On the shelf" aria-labelledby="h-shelf" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) 0;display:flex;flex-direction:column;gap:44px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:44px;height:2px;background:#d42a20"></div>
+    <h2 id="h-shelf" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">On the shelf</h2>
+    <p style="margin:0;max-width:560px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.4;color:#c9c4bd;text-wrap:pretty">A few things that don't stay long. In-store prices. Call to check stock.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:1 / 1;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="prod-lighter-case" src="../assets/prod-lighter-case.jpg" shape="rect" placeholder="Product photo — leather lighter case"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Leather lighter case</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty;flex:1">One damn fine coat. Snaps shut over a standard lighter and keeps the rain out.</p><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;line-height:1;color:#e0392e">$14.99</div></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="position:relative">
+        <div style="aspect-ratio:1 / 1;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="prod-stash-jar" src="../assets/prod-stash-jar.jpg" shape="rect" placeholder="Product photo — stash jar"></image-slot></div>
+        <div aria-hidden="true" title="Parked outside the farm" style="position:absolute;top:14px;right:14px;z-index:2;pointer-events:none;background:#e3b51a;color:#111;border-radius:3px;box-shadow:inset 0 0 0 2px #111, 0 4px 12px rgba(0,0,0,0.5);padding:3px 10px;font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:15px;letter-spacing:0.14em;transform:rotate(4deg)">TYB 069</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Smell-proof stash jar</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty;flex:1">Airtight glass, black lid. What goes in stays in. So does the smell.</p><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;line-height:1;color:#e0392e">$24.99</div></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:1 / 1;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="prod-salt-nic" src="../assets/prod-salt-nic.jpg" shape="rect" placeholder="Product photo — salt-nic e-liquid"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Salt-nic e-liquid, 30ml</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty;flex:1">Smooth hit, clean finish. Pick your strength at the counter.</p><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;line-height:1;color:#e0392e">$19.99</div></div>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:1 / 1;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="prod-hand-pipe" src="../assets/prod-hand-pipe.jpg" shape="rect" placeholder="Product photo — glass hand pipe"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Glass hand pipe</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty;flex:1">Thick glass. Simple shape. Nothing to explain.</p><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;line-height:1;color:#e0392e">$29.99</div></div>
+    </article>
+  </div>
+</section>
+
+<section id="deals" data-screen-label="Deals" aria-labelledby="h-deals" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) 0;display:flex;flex-direction:column;gap:36px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:44px;height:2px;background:#d42a20"></div>
+    <h2 id="h-deals" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Deals</h2>
+    <p style="margin:0;max-width:560px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.4;color:#c9c4bd">Deals change. The prices don't lie.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.12)">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 48px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,0.12)">
+      <div style="flex:0 0 min(100%, 320px);font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:clamp(60px, 9vw, 112px);line-height:0.9;color:#e0392e">$45</div>
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;letter-spacing:0.08em;text-transform:uppercase">Any 3 e-liquids</div><p style="margin:0;color:#a8a39c;font-size:17px">Mix and match. 30ml bottles. Tax extra.</p></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 48px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,0.12)">
+      <div style="flex:0 0 min(100%, 320px);font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:clamp(60px, 9vw, 112px);line-height:0.9;color:#e0392e">15% off</div>
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;letter-spacing:0.08em;text-transform:uppercase">Glass Tuesday</div><p style="margin:0;color:#a8a39c;font-size:17px">All glass, all day Tuesday. One piece per customer.</p></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 48px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,0.12)">
+      <div style="flex:0 0 min(100%, 320px);font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:clamp(60px, 9vw, 112px);line-height:0.9;color:#e0392e">10% off</div>
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;letter-spacing:0.08em;text-transform:uppercase">Text club</div><p style="margin:0;color:#a8a39c;font-size:17px">Join the list and your next visit costs less.</p><a href="#contact" onClick="{{ go.contact }}" style="align-self:flex-start;margin-top:4px;color:#e8d20f;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:16px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none" style-hover="color:#52b6dc">Sign up below →</a></div>
+    </div>
+  </div>
+  <p style="margin:0;font-size:14px;color:#a8a39c;text-wrap:pretty">While supplies last. New deals go to the Text Club first.</p>
+</section>
+
+
+<section id="about" data-screen-label="About" aria-labelledby="h-about" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) 0;display:flex;flex-direction:column;gap:40px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr));gap:clamp(32px, 5vw, 72px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="width:44px;height:2px;background:#d42a20"></div>
+      <h2 id="h-about" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">About</h2>
+      <p style="margin:0;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:clamp(24px, 2.6vw, 30px);line-height:1.3;text-wrap:pretty">This city's got a hundred places to buy a vape. Mine's the one on Cherokee Street with the red sign.</p>
+      <p style="margin:0;font-size:18px;color:#c9c4bd;text-wrap:pretty">I'm Ian Alderige. I run Vape City. I keep the shelves stocked, the glass clean and the answers straight. If I don't know, I say so.</p>
+      <p style="margin:0;font-size:18px;color:#c9c4bd;text-wrap:pretty">Walk in. Ask. Walk out with what you came for. Bring ID.</p>
+      <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">— Ian Alderige, owner</div>
+    </div>
+    <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.2) brightness(0.85);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="about-storefront" src="../assets/about-storefront.jpg" shape="rect" placeholder="Storefront photo"></image-slot></div>
+  </div>
+  <div aria-hidden="true" style="display:flex;flex-direction:column;overflow:hidden">
+    <div style="display:flex;align-items:flex-end;gap:14px;overflow:hidden;height:112px;padding:0 6px">
+      <div style="flex:none;width:56px;height:52px;border:1px solid rgba(235,231,225,0.35);border-radius:3px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0))"><span style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:9px;letter-spacing:0.14em;color:#a8a39c">COILS</span></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:20px;background:#1a1a1a;border:1px solid rgba(235,231,225,0.3);border-bottom:0"></div><div style="width:34px;height:72px;border:1px solid rgba(235,231,225,0.35);border-radius:10px 10px 2px 2px;background:linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 40%);display:flex;align-items:center"><span style="width:100%;background:#2a2a2a;height:16px"></span></div></div>
+      <div style="flex:none;width:74px;height:38px;border:1px solid rgba(235,231,225,0.35);display:flex;align-items:center;justify-content:center"><span style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:10px;letter-spacing:0.16em;color:#a8a39c">PAPERS</span></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center" title="Chango"><div style="width:12px;height:26px;background:#1a1a1a;border:1px solid rgba(235,231,225,0.3);border-bottom:0"></div><div style="width:38px;height:80px;border:1px solid rgba(235,231,225,0.35);border-radius:12px 12px 2px 2px;background:linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 40%);display:flex;align-items:center"><span style="background:#2e8f4e;color:#f3efe6;font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:8px;letter-spacing:0.06em;padding:4px 1px;width:100%;text-align:center">CHANGO</span></div></div>
+      <div style="flex:none;width:30px;height:56px;border:1px solid rgba(235,231,225,0.3);border-radius:3px"></div>
+      <div style="flex:none;width:30px;height:56px;border:1px solid rgba(235,231,225,0.3);border-radius:3px"></div>
+      <div style="flex:none;width:62px;height:64px;border:1px solid rgba(235,231,225,0.3);border-radius:6px 6px 3px 3px"></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center"><div style="width:8px;height:14px;background:#1a1a1a;border:1px solid rgba(235,231,225,0.3);border-bottom:0"></div><div style="width:28px;height:58px;border:1px solid rgba(235,231,225,0.3);border-radius:8px 8px 2px 2px"></div></div>
+      <div style="flex:none;width:88px;height:32px;border:1px solid rgba(235,231,225,0.3)"></div>
+      <div style="flex:none;width:40px;height:88px;border:1px solid rgba(235,231,225,0.3);border-radius:18px 18px 2px 2px"></div>
+      <div style="flex:none;width:56px;height:52px;border:1px solid rgba(235,231,225,0.3);border-radius:3px"></div>
+    </div>
+    <div style="height:6px;background:linear-gradient(180deg, #3a3632, #1a1816)"></div>
+    <div style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-size:16px;color:#a8a39c;padding:10px 6px 0">Back shelf. Not for sale. Don't ask.</div>
+  </div>
+</section>
+
+<section id="visit" data-screen-label="Visit Us" aria-labelledby="h-visit" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) 0;display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:44px;height:2px;background:#d42a20"></div>
+    <h2 id="h-visit" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Visit us</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr));gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1)">
+    <div style="min-height:420px;position:relative;overflow:hidden;background:#000">
+      <iframe title="Map to Vape City, 3895 Cherokee St NW, Kennesaw" src="https://www.google.com/maps?q=3895+Cherokee+St+NW+Ste+330,+Kennesaw,+GA+30144&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(0.92) contrast(1.2) brightness(0.9)"></iframe>
+    </div>
+    <div style="background:#0b0b0b;padding:clamp(22px, 3.5vw, 40px);display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Address</div>
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:26px;line-height:1.2;letter-spacing:0.03em">3895 Cherokee St NW, Ste 330<br>Kennesaw, GA 30144</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Hours</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 20px;font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:22px;letter-spacing:0.03em">
+          <span>Mon–Fri</span><span>10am–8pm</span>
+          <span>Sat–Sun</span><span>12pm–8pm</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.14em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:50%;background:{{ statusDot }}"></span>{{ openLine }}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#a8a39c">Phone</div>
+        <a href="tel:+16784027463" style="font-family:'Barlow Condensed', sans-serif;font-weight:500;font-size:28px;letter-spacing:0.03em;text-decoration:none">(678) 402-7463</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto">
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3895%20Cherokee%20St%20NW%20Ste%20330%2C%20Kennesaw%2C%20GA%2030144" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:56px;padding:12px 22px;background:#d42a20;color:#fff;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:18px;letter-spacing:0.18em;text-transform:uppercase;transition:background .25s" style-hover="background:#b0201a;color:#fff">Get directions</a>
+        <div style="font-size:14px;color:#a8a39c;text-wrap:pretty">Opens Google Maps with the route from wherever you're standing. It knows where you are. I don't.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" aria-labelledby="h-contact" style="max-width:1320px;margin:0 auto;padding:clamp(64px, 9vw, 120px) clamp(18px, 4vw, 40px) clamp(64px, 9vw, 120px);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:44px;height:2px;background:#d42a20"></div>
+    <h2 id="h-contact" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Contact us</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 380px), 1fr));gap:clamp(24px, 4vw, 56px)">
+    <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:18px;margin:0">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;letter-spacing:0.04em;text-transform:uppercase;line-height:1">Leave a message</h3>
+        <p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Stock, special orders, product questions, suggestions. Leave it here. We'll get back to you.</p>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">Name
+        <input name="name" type="text" autocomplete="name" required="" style="font-family:Barlow, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:1px solid rgba(235,231,225,0.2);border-radius:2px;background:#0f0f0f;color:#ebe7e1;outline:none;min-height:52px" style-focus="border-color:#52b6dc">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">Phone number
+        <input name="phone" type="tel" autocomplete="tel" inputmode="tel" style="font-family:Barlow, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:1px solid rgba(235,231,225,0.2);border-radius:2px;background:#0f0f0f;color:#ebe7e1;outline:none;min-height:52px" style-focus="border-color:#52b6dc">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">Email address
+        <input name="email" type="email" autocomplete="email" required="" style="font-family:Barlow, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:1px solid rgba(235,231,225,0.2);border-radius:2px;background:#0f0f0f;color:#ebe7e1;outline:none;min-height:52px" style-focus="border-color:#52b6dc">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">Message
+        <textarea name="message" rows="5" required="" style="font-family:Barlow, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:1px solid rgba(235,231,225,0.2);border-radius:2px;background:#0f0f0f;color:#ebe7e1;outline:none;resize:vertical" style-focus="border-color:#52b6dc"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;min-height:54px;padding:12px 32px;background:#d42a20;color:#fff;border:0;cursor:pointer;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:18px;letter-spacing:0.18em;text-transform:uppercase;transition:background .25s" style-hover="background:#b0201a">Submit</button>
+      <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="border-left:0;background:#111;color:#ebe7e1;padding:12px 14px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-size:19px">Message received. We'll be in touch.</div>
+      </sc-if>
+    </form>
+
+    <form onSubmit="{{ submitSms }}" style="background:#0b0b0b;border:1px solid rgba(255,255,255,0.1);padding:clamp(22px, 3.5vw, 36px);display:flex;flex-direction:column;gap:18px;margin:0">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;letter-spacing:0.04em;text-transform:uppercase;line-height:1;color:#e8d20f">Text club</h3>
+        <p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">One text a month, give or take. Only the good deals.</p>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">Mobile number
+        <input name="sms_phone" type="tel" autocomplete="tel" inputmode="tel" required="" placeholder="(678) 555-0100" style="font-family:Barlow, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:1px solid rgba(235,231,225,0.2);border-radius:2px;background:#070707;color:#ebe7e1;outline:none;min-height:52px" style-focus="border-color:#52b6dc">
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:16px;line-height:1.4">
+        <input name="sms_consent" type="checkbox" required="" style="flex:none;width:22px;height:22px;margin:0;accent-color:#d42a20;cursor:pointer">
+        <span style="font-weight:500">Yes, text me promotions from Vape City at this number.</span>
+      </label>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#a8a39c;text-wrap:pretty">By providing your phone number and clicking 'I Agree,' you agree to receive promotional text messages from Vape City at the number provided, including messages sent using automated technology where applicable. Consent is not a condition of purchasing any goods or services. Message and data rates may apply. Message frequency: approx. 1 msg/month. Reply STOP to opt out or HELP for help.</p>
+      <button type="submit" style="align-self:flex-start;min-height:54px;padding:12px 32px;background:#d42a20;color:#fff;border:0;cursor:pointer;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:18px;letter-spacing:0.18em;text-transform:uppercase;transition:background .25s" style-hover="background:#b0201a">I Agree</button>
+      <sc-if value="{{ smsError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="border:1px solid #d42a20;color:#ebe7e1;padding:10px 12px;font-size:15px">{{ smsError }}</div>
+      </sc-if>
+      <sc-if value="{{ smsDone }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#111;color:#ebe7e1;padding:12px 14px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-size:19px">You're on the list. Reply STOP any time to get off it.</div>
+      </sc-if>
+    </form>
+  </div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isLost }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="404" aria-labelledby="h-404" style="max-width:1320px;margin:0 auto;min-height:74vh;padding:clamp(40px, 8vw, 96px) clamp(18px, 4vw, 40px);display:flex;flex-direction:column;justify-content:center;gap:26px">
+  <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:14px;letter-spacing:0.24em;text-transform:uppercase;color:#a8a39c">Error 404 · Past the city limits</div>
+  <h2 id="h-404" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:clamp(64px, 13vw, 170px);line-height:0.88;color:#e0392e;text-transform:uppercase">Wrong turn.</h2>
+  <div style="align-self:flex-start;background:#1d6b3a;color:#f3efe6;border-radius:6px;box-shadow:inset 0 0 0 3px #1d6b3a, inset 0 0 0 5px #f3efe6, 0 10px 30px rgba(0,0,0,0.6);padding:16px 26px;display:flex;flex-direction:column;gap:2px;transform:rotate(-1.5deg)">
+    <span style="font-family:Barlow, sans-serif;font-weight:600;font-size:clamp(20px, 3.6vw, 32px)">Santa Yolanda Tar Pits</span>
+    <span style="font-family:Barlow, sans-serif;font-weight:500;font-size:18px">Next exit →</span>
+  </div>
+  <p style="margin:0;max-width:600px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:24px;line-height:1.4;text-wrap:pretty">This page doesn't exist. Out here nothing does. Just tar, a dirt road, and a couple of concrete dinosaurs who've seen more than they'll ever say.</p>
+  <a href="#top" onClick="{{ go.top }}" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:12px 26px;background:#d42a20;color:#fff;text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:17px;letter-spacing:0.18em;text-transform:uppercase" style-hover="background:#b0201a;color:#fff">Back to the city</a>
+</section>
+</sc-if>
+
+<footer style="border-top:1px solid rgba(255,255,255,0.1);background:#040404">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(40px, 6vw, 72px) clamp(18px, 4vw, 40px) 28px;display:flex;flex-direction:column;gap:36px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 230px), 1fr));gap:32px;align-items:start">
+      <div aria-label="Ian Alderige's Vape City" style="display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:58px;line-height:0.9;margin-top:0.25em;letter-spacing:-0.01em;text-shadow:3px 3px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.22em;line-height:1;letter-spacing:0.02em;text-shadow:1px 1px 0 #000;margin-bottom:1em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:16px;color:#c9c4bd">
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:6px;color:#a8a39c">Visit</div>
+        <div>3895 Cherokee St NW, Ste 330</div>
+        <div>Kennesaw, GA 30144</div>
+        <a href="tel:+16784027463" style="color:#ebe7e1">(678) 402-7463</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:16px;color:#c9c4bd">
+        <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:6px;color:#a8a39c">Hours</div>
+        <div>Mon–Fri 10am–8pm</div>
+        <div>Sat–Sun 12pm–8pm</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+        <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:transparent;border:1px solid rgba(235,231,225,0.25);color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
+          <span style="position:relative;width:40px;height:22px;border-radius:11px;flex:none;background:{{ trackBg }};transition:background .25s"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;border-radius:50%;background:#ebe7e1;transition:left .25s"></span></span>
+          <span style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:16px;line-height:1.25">{{ rainLine }}</span>
+        </button>
+        <div aria-hidden="true" title="Parked out back" style="position:relative;background:linear-gradient(180deg, #efece4, #d8d3c8);color:#1a1a1a;border-radius:5px;box-shadow:inset 0 0 0 2px #1a1a1a, 0 6px 16px rgba(0,0,0,0.6);width:136px;padding:8px 0 6px;text-align:center;transform:rotate(-2deg)">
+          <span style="position:absolute;top:6px;left:10px;width:5px;height:5px;border-radius:50%;background:#555"></span>
+          <span style="position:absolute;top:6px;right:10px;width:5px;height:5px;border-radius:50%;background:#555"></span>
+          <div style="font-family:'Barlow Condensed', sans-serif;font-weight:700;font-size:28px;letter-spacing:0.12em;line-height:1">LEV 311</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:14px;color:#a8a39c">
+      <span style="font-weight:600;color:#c9c4bd">WARNING: Nicotine is an addictive chemical. Must be 21+ to purchase. Valid government ID required for every purchase.</span>
+      <span>© 2026 Vape City · Kennesaw, GA · <a href="#/tar-pits" style="color:#c9c4bd">Took a wrong turn?</a></span>
+    </div>
+  </div>
+</footer>
+</main>
+
+<sc-if value="{{ showGate }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="gate-title" style="position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden;background:#000">
+    <picture><source media="(min-width: 700px)" srcset="../assets/the-customer-wide.webp" type="image/webp"><img src="../assets/the-customer.png" alt="" aria-hidden="true" style="position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);object-fit:cover;object-position:42% 50%;filter:blur(14px) brightness(0.32)"></picture>
+    <div style="position:relative;width:100%;max-width:470px;background:rgba(8,8,8,0.9);border:1px solid rgba(235,231,225,0.16);border-top:2px solid #d42a20;padding:clamp(26px, 6vw, 44px);display:flex;flex-direction:column;gap:20px;box-shadow:0 30px 80px rgba(0,0,0,0.8)">
+      <div aria-label="Ian Alderige's Vape City" style="display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:52px;line-height:0.9;margin-top:0.25em;letter-spacing:-0.01em;text-shadow:3px 3px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.22em;line-height:1;letter-spacing:0.02em;text-shadow:1px 1px 0 #000;margin-bottom:1em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </div>
+      <sc-if value="{{ gateAsk }}" hint-placeholder-val="{{ true }}">
+        <h2 id="gate-title" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(34px, 8vw, 46px);line-height:1;letter-spacing:0.02em;text-transform:uppercase">Are you 21 or older?</h2>
+        <p style="margin:0;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:20px;line-height:1.35;color:#c9c4bd;text-wrap:pretty">Nobody under 21 gets through the door. Same goes for the website.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button type="button" onClick="{{ ageYes }}" style="min-height:56px;background:#d42a20;color:#fff;border:0;cursor:pointer;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:20px;letter-spacing:0.2em;text-transform:uppercase;transition:background .25s" style-hover="background:#b0201a">Yes</button>
+          <button type="button" onClick="{{ ageNo }}" style="min-height:56px;background:transparent;color:#ebe7e1;border:1px solid rgba(235,231,225,0.4);cursor:pointer;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:20px;letter-spacing:0.2em;text-transform:uppercase;transition:border-color .25s" style-hover="border-color:#ebe7e1">No</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ under }}" hint-placeholder-val="{{ false }}">
+        <h2 id="gate-title" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(34px, 8vw, 46px);line-height:1;text-transform:uppercase;color:#e0392e">Not yet.</h2>
+        <p style="margin:0;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:20px;line-height:1.35;color:#c9c4bd;text-wrap:pretty">This isn't your town. Not for a while. Come back when you're 21 — the sign will still be red.</p>
+        <button type="button" onClick="{{ ageBack }}" style="align-self:flex-start;background:none;border:0;padding:8px 0;color:#ebe7e1;text-decoration:underline;cursor:pointer;font-size:14px">I answered wrong</button>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;smokeDensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.3,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;default&quot;:1.9,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;puffGap&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:30,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;s&quot;,&quot;default&quot;:5.5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;lightningEvery&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:2,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;default&quot;:3,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;alwaysShowAgeGate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;}}">
+class Component extends DCLogic {
+  rainRef = React.createRef();
+  smokeRef = React.createRef();
+  state = {
+    ageOk: (() => { try { return localStorage.getItem('vc_age_ok') === '1'; } catch (e) { return false; } })(),
+    under: false, rain: false, route: 'home', now: Date.now(),
+    contactSent: false, smsDone: false, smsError: ''
+  };
+  // image-space anchors. Phone: the-customer.png (1672×941). Wide: the-customer-wide.webp (3840×1645) mapped to a 2704×1158 virtual space so she's the same size in anchor units.
+  IW = 1672; IH = 941; LIPS = { x: 686, y: 184 }; TIP = { x: 594, y: 537 }; PX = 0.3; wide = false;
+  setScene(wide) {
+    if (wide === this.wide) return; this.wide = wide;
+    Object.assign(this, wide
+      ? { IW: 2704, IH: 1158, LIPS: { x: 1490, y: 391 }, TIP: { x: 1396, y: 742 }, PX: 0.5 }
+      : { IW: 1672, IH: 941, LIPS: { x: 686, y: 184 }, TIP: { x: 594, y: 537 }, PX: 0.3 });
+    this.parts = []; this.flash = null; if (this.reduced) this.prewarm();
+  }
+
+  componentDidMount() {
+    this.reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let r = null; try { r = localStorage.getItem('vc_rain'); } catch (e) {}
+    this.setState({
+      rain: r === null ? !this.reduced : r === '1',
+      route: this.routeFromHash(),
+      ageOk: this.props.alwaysShowAgeGate ? false : this.state.ageOk
+    });
+    this.onHash = () => this.setState({ route: this.routeFromHash() }, () => window.scrollTo(0, 0));
+    window.addEventListener('hashchange', this.onHash);
+    this.onResize = () => { const n = innerWidth < 700; if (n !== this.state.narrow) this.setState({ narrow: n }); };
+    window.addEventListener('resize', this.onResize); this.onResize();
+    this.clock = setInterval(() => this.setState({ now: Date.now() }), 60000);
+    this.t = 0; this.parts = []; this.drops = []; this.flash = null;
+    this.nextFlash = 120;
+    this.sprites = [11, 29, 47].map(s => this.makeSprite(s));
+    this.grain = this.makeGrain();
+    const loop = () => { this.raf = requestAnimationFrame(loop); this.t++; this.drawRain(); this.drawHero(); };
+    loop();
+    this.syncBody();
+    this.setupTouchColor();
+  }
+  setupTouchColor() {
+    if (!window.matchMedia || !matchMedia('(hover: none)').matches || !window.IntersectionObserver) return;
+    if (this.io) this.io.disconnect();
+    this.io = new IntersectionObserver((es) => es.forEach(e => {
+      const p = e.target;
+      p.style.setProperty('filter', e.isIntersecting ? 'grayscale(0) contrast(1) brightness(1)' : p.dataset.bwFilter, 'important');
+    }), { rootMargin: '-35% 0px -35% 0px' });
+    document.querySelectorAll('image-slot').forEach(s => {
+      const p = s.parentElement; if (!p) return;
+      if (!p.dataset.bwFilter) p.dataset.bwFilter = getComputedStyle(p).filter;
+      this.io.observe(p);
+    });
+  }
+  componentDidUpdate(pp, ps) {
+    if (ps && ps.route !== this.state.route && this.state.route === 'home') setTimeout(() => this.setupTouchColor(), 50);
+    if (pp.alwaysShowAgeGate !== this.props.alwaysShowAgeGate && this.props.alwaysShowAgeGate) this.setState({ ageOk: false, under: false });
+    if (pp.smokeDensity !== this.props.smokeDensity && this.reduced) { this.parts = []; this.prewarm(); this.dirty = true; }
+    this.syncBody();
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf); clearInterval(this.clock); if (this.io) this.io.disconnect();
+    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize);
+    document.body.style.overflow = '';
+  }
+  syncBody() { document.body.style.overflow = this.state.ageOk ? '' : 'hidden'; }
+  routeFromHash() { return (location.hash || '').startsWith('#/') ? 'lost' : 'home'; }
+
+  nav(e, id) {
+    if (e) e.preventDefault();
+    const run = () => {
+      const el = id === 'top' ? null : document.getElementById(id);
+      const y = el ? el.getBoundingClientRect().top + window.scrollY - 62 : 0;
+      window.scrollTo({ top: y, behavior: this.reduced ? 'auto' : 'smooth' });
+    };
+    if (this.state.route !== 'home') {
+      history.replaceState(null, '', location.pathname + location.search);
+      this.setState({ route: 'home' }, () => setTimeout(run, 40));
+    } else run();
+  }
+
+  openInfo() {
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date(this.state.now));
+      const get = (t) => (parts.find(p => p.type === t) || {}).value;
+      const idx = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+      const now = (+get('hour') % 24) + (+get('minute')) / 60;
+      const wk = (d) => d === 0 || d === 6;
+      const open = wk(idx) ? 12 : 10;
+      if (now >= open && now < 20) return { open: true, line: 'Open now · Closes 8pm' };
+      if (now < open) return { open: false, line: 'Closed · Opens ' + (wk(idx) ? '12pm' : '10am') + ' today' };
+      return { open: false, line: 'Closed · Opens ' + (wk((idx + 1) % 7) ? '12pm' : '10am') + ' tomorrow' };
+    } catch (e) { return { open: false, line: 'Mon–Fri 10–8 · Sat–Sun 12–8' }; }
+  }
+
+  /* ---------- assets ---------- */
+  makeSprite(seed) {
+    const N = 96, c = document.createElement('canvas'); c.width = c.height = N;
+    const x = c.getContext('2d'), img = x.createImageData(N, N), d = img.data;
+    let s = seed; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    const grid = (g) => { const a = []; for (let i = 0; i < (g + 1) * (g + 1); i++) a.push(rnd()); return a; };
+    const g1 = grid(6), g2 = grid(14);
+    const sample = (a, g, u, v) => {
+      const fx = u * g, fy = v * g, ix = Math.floor(fx), iy = Math.floor(fy), tx = fx - ix, ty = fy - iy;
+      const at = (i, j) => a[Math.min(g, j) * (g + 1) + Math.min(g, i)];
+      const sx = tx * tx * (3 - 2 * tx), sy = ty * ty * (3 - 2 * ty);
+      return (at(ix, iy) * (1 - sx) + at(ix + 1, iy) * sx) * (1 - sy) + (at(ix, iy + 1) * (1 - sx) + at(ix + 1, iy + 1) * sx) * sy;
+    };
+    for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+      const u = i / (N - 1), v = j / (N - 1), dx = u - 0.5, dy = v - 0.5, dist = Math.sqrt(dx * dx + dy * dy) * 2;
+      const fall = Math.max(0, 1 - dist); const n = sample(g1, 6, u, v) * 0.65 + sample(g2, 14, u, v) * 0.35;
+      const a = Math.pow(fall, 1.6) * Math.max(0, n * 1.5 - 0.35);
+      const k = (j * N + i) * 4; d[k] = 222; d[k + 1] = 218; d[k + 2] = 212; d[k + 3] = Math.min(255, a * 255);
+    }
+    x.putImageData(img, 0, 0); return c;
+  }
+  makeGrain() {
+    const N = 180, c = document.createElement('canvas'); c.width = c.height = N;
+    const x = c.getContext('2d'), img = x.createImageData(N, N), d = img.data;
+    for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+    x.putImageData(img, 0, 0); return c;
+  }
+
+  /* ---------- rain ---------- */
+  newDrop(w, h, any) {
+    const z = 0.25 + Math.random() * 0.75, s = 8 + z * 16;
+    return { x: Math.random() * (w + h * 0.2), y: any ? Math.random() * h : -20 - Math.random() * 140, vx: -s * 0.1, vy: s, l: 1 + z * 1.4, z };
+  }
+  drawRain() {
+    const c = this.rainRef.current; if (!c) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), w = innerWidth, h = innerHeight;
+    if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); this.drops = []; this.rainClear = false; }
+    const ctx = c.getContext('2d');
+    if (!this.state.rain) { if (!this.rainClear) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, c.width, c.height); this.rainClear = true; } return; }
+    this.rainClear = false;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+    const n = Math.round(w * h / 5200);
+    while (this.drops.length < n) this.drops.push(this.newDrop(w, h, true));
+    if (this.drops.length > n) this.drops.length = n;
+    const layers = [[0, 0.5, 'rgba(220,220,225,0.10)', 0.7], [0.5, 0.8, 'rgba(225,225,230,0.17)', 0.9], [0.8, 1.01, 'rgba(235,235,240,0.26)', 1.1]];
+    for (const d of this.drops) { d.x += d.vx; d.y += d.vy; if (d.y > h + 40 || d.x < -40) Object.assign(d, this.newDrop(w, h, false)); }
+    for (const [lo, hi, col, lw] of layers) {
+      ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath();
+      for (const d of this.drops) if (d.z >= lo && d.z < hi) { ctx.moveTo(d.x, d.y); ctx.lineTo(d.x - d.vx * d.l, d.y - d.vy * d.l); }
+      ctx.stroke();
+    }
+  }
+
+  /* ---------- hero: smoke, ember, lightning, grain ---------- */
+  emit() {
+    const dens = this.props.smokeDensity ?? 1, P = this.parts, R = Math.random;
+    let n = Math.floor(1.3 * dens + R());
+    while (n-- > 0) P.push({ x: this.TIP.x - 2 + R() * 3, y: this.TIP.y - 2, vx: (R() - 0.5) * 0.12, vy: -(0.45 + R() * 0.35), a: 0, m: 170 + R() * 90, r0: 1.4, r1: 12 + R() * 16, o: 0.075, sp: R() * 6.28, rot: R() * 6.28, vr: (R() - 0.5) * 0.01, s: (R() * 3) | 0, ramp: 50, drag: 0.99 });
+    const EX = 170, gap = Math.max(0, this.props.puffGap ?? 6.5) * 60, cyc = (this.t + 300) % Math.round(EX + gap);
+    if (cyc < EX) {
+      const e = Math.pow(Math.sin(Math.PI * cyc / EX), 0.8);
+      let m = Math.floor(5.5 * e * dens + R());
+      while (m-- > 0) P.push({ x: this.LIPS.x - 2 + R() * 3, y: this.LIPS.y + (R() - 0.5) * 3, vx: -(1.5 + R() * 1.5) * (0.5 + 0.5 * e), vy: -(0.05 + R() * 0.45), a: 0, m: 230 + R() * 120, r0: 2.2, r1: 30 + R() * 36, o: 0.085, sp: R() * 6.28, rot: R() * 6.28, vr: (R() - 0.5) * 0.012, s: (R() * 3) | 0, ramp: 22, drag: 0.962 });
+    } else if (R() < 0.12 * dens) {
+      P.push({ x: this.LIPS.x - 3, y: this.LIPS.y, vx: -0.35, vy: -0.12, a: 0, m: 180, r0: 1.6, r1: 14, o: 0.05, sp: R() * 6.28, rot: 0, vr: 0.004, s: 0, ramp: 30, drag: 0.985 });
+    }
+  }
+  step() {
+    this.emit();
+    const T = this.t * 0.012, P = this.parts;
+    for (let i = P.length - 1; i >= 0; i--) {
+      const p = P[i], turb = Math.min(1, p.a / p.ramp);
+      const ang = Math.sin(p.x * 0.021 + T * 0.9 + p.sp) * 1.6 + Math.cos(p.y * 0.027 - T * 0.6) * 1.6;
+      p.vx += Math.cos(ang) * 0.03 * turb - 0.0035; p.vy += Math.sin(ang) * 0.022 * turb - 0.0028;
+      const dr = p.a < 40 ? p.drag : 0.985; p.vx *= dr; p.vy *= 0.988;
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.a++;
+      if (p.a > p.m || p.y < -80) P.splice(i, 1);
+    }
+  }
+  prewarm() { for (let i = 0; i < 420; i++) { this.t++; this.step(); } }
+  boltPath(x0, y0, x1, y1, disp, depth, out) {
+    if (depth === 0) { out.push([x1, y1]); return; }
+    const mx = (x0 + x1) / 2 + (Math.random() - 0.5) * disp, my = (y0 + y1) / 2 + (Math.random() - 0.5) * disp * 0.25;
+    this.boltPath(x0, y0, mx, my, disp * 0.55, depth - 1, out);
+    this.boltPath(mx, my, x1, y1, disp * 0.55, depth - 1, out);
+  }
+  newFlash() {
+    const R = Math.random, left = R() < 0.35, sx = this.IW / 1672, sy = this.IH / 941;
+    const x = (left ? 60 + R() * 440 : 900 + R() * 700) * sx;
+    const f = { t0: this.t, x, bolts: [] };
+    if (R() < 0.7) {
+      const y1 = (170 + R() * 70) * sy, main = [[x, -10]]; this.boltPath(x, -10, x + (R() - 0.5) * 140 * sy, y1, 90 * sy, 6, main);
+      f.bolts.push({ pts: main, w: 1.6 });
+      if (R() < 0.8) {
+        const bi = Math.floor(main.length * (0.3 + R() * 0.3)), [bx, by] = main[bi], br = [[bx, by]];
+        this.boltPath(bx, by, bx + (R() < 0.5 ? -1 : 1) * (50 + R() * 90) * sy, by + (40 + R() * 60) * sy, 45 * sy, 5, br);
+        f.bolts.push({ pts: br, w: 0.9 });
+      }
+    }
+    return f;
+  }
+  flashI(f) {
+    const d = this.t - f.t0;
+    if (d < 3) return 1; if (d < 7) return 0.22; if (d < 10) return 0.8;
+    return Math.max(0, 0.8 * (1 - (d - 10) / 30));
+  }
+  drawHero() {
+    const c = this.smokeRef.current; if (!c) return;
+    const rect = c.getBoundingClientRect(); if (rect.bottom < 0 || rect.top > innerHeight || rect.width < 2) return;
+    const W = Math.round(rect.width), H = Math.round(rect.height), dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    if (W !== this.hw || H !== this.hh || c.width !== Math.round(W * dpr)) {
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); this.hw = W; this.hh = H;
+      this.setScene(innerWidth >= 700);
+      this.k = Math.max(W / this.IW, H / this.IH);
+      this.ox = (W - this.IW * this.k) * this.PX; this.oy = (H - this.IH * this.k) * 0.5;
+      if (this.reduced && !this.parts.length) this.prewarm();
+      this.dirty = true;
+    }
+    if (this.reduced && !this.dirty) return;
+    this.dirty = false;
+    if (!this.reduced) this.step();
+    const ctx = c.getContext('2d'), k = this.k, ox = this.ox, oy = this.oy;
+    const X = (x) => ox + x * k, Y = (y) => oy + y * k;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+
+    // lightning
+    if (!this.reduced) {
+      if (!this.flash && this.t >= this.nextFlash) {
+        this.flash = this.newFlash();
+        const ev = Math.max(2, this.props.lightningEvery ?? 5);
+        this.nextFlash = this.t + ev * 60 * (0.6 + Math.random() * 0.8);
+      }
+      if (this.flash) {
+        const I = this.flashI(this.flash);
+        if (I <= 0) this.flash = null;
+        else {
+          ctx.globalCompositeOperation = 'screen';
+          const cx = X(this.flash.x), cy = Y(95 * this.IH / 941), R = 150 * k * this.IH / 941;
+          ctx.save(); ctx.translate(cx, cy); ctx.scale(3.2, 1);
+          const g = ctx.createRadialGradient(0, 0, 0, 0, 0, R);
+          g.addColorStop(0, 'rgba(255,170,140,' + (0.55 * I) + ')'); g.addColorStop(0.5, 'rgba(210,90,70,' + (0.28 * I) + ')'); g.addColorStop(1, 'rgba(160,40,30,0)');
+          ctx.fillStyle = g; ctx.fillRect(-R, -R, R * 2, R * 2); ctx.restore();
+          ctx.fillStyle = 'rgba(255,225,215,' + (0.05 * I) + ')'; ctx.fillRect(0, 0, W, H);
+          const d = this.t - this.flash.t0;
+          if (d < 12 && I > 0.2) {
+            ctx.globalCompositeOperation = 'lighter'; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+            for (const b of this.flash.bolts) {
+              ctx.beginPath(); b.pts.forEach(([x, y], i) => i ? ctx.lineTo(X(x), Y(y)) : ctx.moveTo(X(x), Y(y)));
+              ctx.shadowColor = 'rgba(255,120,90,0.9)'; ctx.shadowBlur = 14 * k;
+              ctx.strokeStyle = 'rgba(255,200,180,' + (0.5 * I) + ')'; ctx.lineWidth = b.w * 3 * k; ctx.stroke();
+              ctx.shadowBlur = 0; ctx.strokeStyle = 'rgba(255,248,240,' + I + ')'; ctx.lineWidth = b.w * k; ctx.stroke();
+            }
+          }
+          ctx.globalCompositeOperation = 'source-over';
+        }
+      }
+    }
+
+    // smoke
+    ctx.globalCompositeOperation = 'screen';
+    for (const p of this.parts) {
+      const l = p.a / p.m, r = (p.r0 + (p.r1 - p.r0) * (1 - Math.pow(1 - l, 2))) * k;
+      const fin = Math.min(1, l / 0.06), fout = Math.pow(1 - l, 1.4);
+      ctx.globalAlpha = p.o * fin * fout * 1.6;
+      ctx.save(); ctx.translate(X(p.x), Y(p.y)); ctx.rotate(p.rot);
+      ctx.drawImage(this.sprites[p.s], -r, -r, r * 2, r * 2); ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+
+    // ember
+    const pulse = this.reduced ? 0.85 : 0.72 + 0.2 * Math.sin(this.t * 0.045) + Math.random() * 0.08;
+    const ex = X(this.TIP.x - 1), ey = Y(this.TIP.y + 1);
+    const eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, 14 * k);
+    eg.addColorStop(0, 'rgba(255,120,60,' + (0.55 * pulse) + ')'); eg.addColorStop(0.35, 'rgba(230,50,20,' + (0.25 * pulse) + ')'); eg.addColorStop(1, 'rgba(200,30,10,0)');
+    ctx.fillStyle = eg; ctx.fillRect(ex - 16 * k, ey - 16 * k, 32 * k, 32 * k);
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = 'rgba(255,170,110,' + (0.8 * pulse) + ')'; ctx.beginPath(); ctx.arc(ex, ey, 1.8 * k, 0, 6.283); ctx.fill();
+
+    // grain
+    ctx.globalCompositeOperation = 'overlay'; ctx.globalAlpha = 0.09;
+    const pat = ctx.createPattern(this.grain, 'repeat');
+    ctx.save(); ctx.translate(-((this.t * 37) % 180), -((this.t * 53) % 180));
+    ctx.fillStyle = pat; ctx.fillRect(0, 0, W + 180, H + 180); ctx.restore();
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  }
+
+  renderVals() {
+    const s = this.state, oi = this.openInfo(), rain = !!s.rain;
+    const go = {};
+    ['top', 'shop', 'deals', 'about', 'visit', 'contact'].forEach(k => { go[k] = (e) => this.nav(e, k); });
+    return {
+      rainRef: this.rainRef, smokeRef: this.smokeRef, go, heroPos: s.narrow ? '30%' : '50%',
+      isHome: s.route === 'home', isLost: s.route === 'lost',
+      openLine: oi.line, statusDot: oi.open ? '#3ecf6a' : '#f0a020',
+      rainAria: rain ? 'true' : 'false',
+      rainLine: rain ? "Rain's on. Some people like the rain." : "Rain's off. Some people don't.",
+      trackBg: rain ? '#d42a20' : '#3a3836', knobLeft: rain ? '21px' : '3px',
+      toggleRain: () => { const v = !this.state.rain; try { localStorage.setItem('vc_rain', v ? '1' : '0'); } catch (e) {} this.setState({ rain: v }); },
+      showGate: !s.ageOk, gateAsk: !s.under, under: s.under,
+      ageYes: () => { try { if (!this.props.alwaysShowAgeGate) localStorage.setItem('vc_age_ok', '1'); } catch (e) {} this.setState({ ageOk: true }); },
+      ageNo: () => this.setState({ under: true }),
+      ageBack: () => this.setState({ under: false }),
+      contactSent: s.contactSent,
+      submitContact: (e) => { e.preventDefault(); e.target.reset(); this.setState({ contactSent: true }); },
+      smsDone: s.smsDone, smsError: s.smsError,
+      submitSms: (e) => {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const digits = String(f.get('sms_phone') || '').replace(/\D/g, '');
+        if (digits.length < 10) return this.setState({ smsError: 'That number is short a few digits. Try again.', smsDone: false });
+        if (!f.get('sms_consent')) return this.setState({ smsError: 'Check the box first. Rules are rules.', smsDone: false });
+        e.target.reset(); this.setState({ smsError: '', smsDone: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

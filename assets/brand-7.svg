@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#fff"/>
+  <rect x="0" y="0" width="16" height="400" fill="#d42a20"/>
+  <text x="56" y="190" font-family="Impact, Arial Narrow, sans-serif" font-size="78" fill="#111" letter-spacing="2">COAL HOUSE</text>
+  <text x="56" y="250" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#333">hookah, shisha, coals</text>
+</svg>

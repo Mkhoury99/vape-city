@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#fff"/>
+  <text x="300" y="188" text-anchor="middle" font-family="Impact, Arial Narrow, sans-serif" font-size="96" fill="#111" letter-spacing="2">SALT LINE</text>
+  <rect x="70" y="220" width="460" height="10" fill="#d42a20"/>
+  <text x="300" y="280" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#333">30ml nicotine salts</text>
+</svg>

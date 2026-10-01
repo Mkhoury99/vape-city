@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Vape City — Kennesaw, GA · Smoke · Vape · CBD · 21+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wght@400;600;800&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+@font-face { font-family: 'Sin City'; src: url('./fonts/SinCity.ttf') format('truetype'); font-display: swap; }
+html, body { margin: 0; background: #000; color: #fff; -webkit-text-size-adjust: 100%; }
+* { box-sizing: border-box; }
+a { color: #ff2d2d; }
+a:hover { color: #fff; }
+::selection { background: #ff2d2d; color: #000; }
+input, textarea, button, select { font: inherit; }
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;background:#000;color:#fff;font-family:Archivo, 'Helvetica Neue', Helvetica, sans-serif;font-size:17px;line-height:1.5">
+<canvas ref="{{ rainRef }}" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;display:block"></canvas>
+
+<div style="background:#fff;color:#000;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 14px;text-align:center;text-wrap:balance">21+ only. ID checked every time. No exceptions, no favors.</div>
+
+<nav aria-label="Main" style="position:sticky;top:0;z-index:20;background:#000;border-bottom:3px solid #fff;display:flex;align-items:center;gap:18px;padding:0 14px;height:60px">
+  <a href="#top" onClick="{{ go.top }}" aria-label="Vape City home" style="flex:none;text-decoration:none;color:#ff2d2d;font-family:'Sin City', Impact, sans-serif;font-size:28px;line-height:1;transform:rotate(-4deg);display:block">VAPE CITY</a>
+  <div style="flex:1;min-width:0;overflow-x:auto;display:flex;justify-content:flex-end;gap:4px;scrollbar-width:none">
+    <a href="#shop" onClick="{{ go.shop }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">Shop</a>
+    <a href="#brands" onClick="{{ go.brands }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">Brands</a>
+    <a href="#deals" onClick="{{ go.deals }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">Deals</a>
+    <a href="#about" onClick="{{ go.about }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">About</a>
+    <a href="#visit" onClick="{{ go.visit }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">Visit</a>
+    <a href="#contact" onClick="{{ go.contact }}" style="flex:none;color:#fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:17px;letter-spacing:0.06em;text-transform:uppercase;padding:14px 10px" style-hover="color:#ff2d2d">Contact</a>
+  </div>
+</nav>
+
+<main id="top" style="display:grid;gap:12px;padding:12px;max-width:1440px;margin:0 auto">
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+<section data-screen-label="Home" aria-label="Vape City" style="position:relative;border:3px solid #fff;min-height:min(92vh, 860px);overflow:hidden;background:#000;display:flex">
+  <canvas ref="{{ smokeRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(20px, 5vw, 64px);width:100%;min-height:100%">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+      <h1 ref="{{ markRef }}" aria-label="Ian Alderige's Vape City" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:clamp(56px, 14vw, 150px);line-height:0.9;margin-top:0.12em;letter-spacing:-0.01em;text-shadow:6px 6px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.17em;line-height:1;letter-spacing:0.02em;text-shadow:2px 2px 0 #000;margin-bottom:1.3em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </h1>
+      <div style="margin-top:22px;max-width:440px;background:#fff;color:#000;border:3px solid #000;padding:12px 14px;font-family:'Courier Prime', monospace;font-weight:700;font-size:16px;line-height:1.4;box-shadow:6px 6px 0 #000">Kennesaw. Cherokee Street. Suite 330. The sign is red and the glass is black. Smoke, vape, CBD. Twenty-one and up.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+      <div style="display:flex;align-items:center;gap:10px;background:#000;border:2px solid #fff;padding:8px 12px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase">
+        <span style="width:10px;height:10px;flex:none;background:{{ statusDot }}"></span>
+        <span>{{ openLine }}</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#shop" onClick="{{ go.shop }}" style="display:inline-flex;align-items:center;min-height:52px;padding:12px 22px;background:#ff2d2d;color:#000;border:3px solid #000;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:20px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff;color:#000">Shop the city</a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3895%20Cherokee%20St%20NW%20Ste%20330%2C%20Kennesaw%2C%20GA%2030144" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:52px;padding:12px 22px;background:#000;color:#fff;border:3px solid #fff;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:20px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff;color:#000">Get directions</a>
+      </div>
+      <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:#000;border:2px solid #fff;color:#fff;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left">
+        <span style="position:relative;width:46px;height:26px;border:2px solid #fff;flex:none;background:{{ trackBg }}"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;background:{{ knobBg }}"></span></span>
+        <span style="font-family:'Courier Prime', monospace;font-size:15px;line-height:1.3">{{ rainLine }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Hours, address, phone" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr));gap:12px">
+  <div style="background:#fff;color:#000;border:3px solid #000;padding:18px;display:flex;flex-direction:column;gap:6px">
+    <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Hours</div>
+    <div style="font-family:Anton, Impact, sans-serif;font-size:24px;text-transform:uppercase;line-height:1.2">Mon–Fri 10am–8pm<br>Sat–Sun 12pm–8pm</div>
+    <div style="font-family:'Courier Prime', monospace;font-size:15px">Lights off at eight. Every night.</div>
+  </div>
+  <div style="background:#fff;color:#000;border:3px solid #000;padding:18px;display:flex;flex-direction:column;gap:6px">
+    <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Address</div>
+    <div style="font-family:Anton, Impact, sans-serif;font-size:24px;text-transform:uppercase;line-height:1.2">3895 Cherokee St NW, Ste 330<br>Kennesaw, GA 30144</div>
+    <a href="#visit" onClick="{{ go.visit }}" style="font-family:'Courier Prime', monospace;font-weight:700;font-size:15px;color:#000">Find the red sign →</a>
+  </div>
+  <div style="background:#fff;color:#000;border:3px solid #000;padding:18px;display:flex;flex-direction:column;gap:6px">
+    <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Phone</div>
+    <a href="tel:+16784027463" style="font-family:Anton, Impact, sans-serif;font-size:34px;line-height:1.1;color:#000;text-decoration:none" style-hover="color:#000;text-decoration:underline">(678) 402-7463</a>
+    <div style="font-family:'Courier Prime', monospace;font-size:15px">Call before you drive. I pick up.</div>
+  </div>
+</section>
+
+<section id="shop" data-screen-label="Shop" aria-labelledby="h-shop" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 01</div>
+    <h2 id="h-shop" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">Shop by category</h2>
+    <p style="margin:0;max-width:640px;font-family:'Courier Prime', monospace;font-size:17px;text-wrap:pretty">Seven aisles. No maze. Everything in here is 21+ and I check ID every time. In-store only — nothing ships.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 280px), 1fr));gap:12px">
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-vapes" src="./assets/cat-vapes.jpg" shape="rect" placeholder="Product photo — vapes &amp; disposables"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">01</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">Vapes &amp; Disposables</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Pocket-size. No fuss. Rechargeables and disposables, restocked before they run dry.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-eliquids" src="./assets/cat-eliquids.jpg" shape="rect" placeholder="Product photo — e-liquids"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">02</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">E-Liquids</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Freebase and salts, every strength on the shelf. Tell me what you like. I'll tell you what's in.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-glass" src="./assets/cat-glass.jpg" shape="rect" placeholder="Product photo — glass"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">03</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">Glass</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Pipes, bubblers, rigs. Built heavy. Handle it like it's the last one in town.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-papers" src="./assets/cat-papers.jpg" shape="rect" placeholder="Product photo — papers &amp; wraps"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">04</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">Papers &amp; Wraps</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Papers, cones, wraps, tips. The small stuff that runs the whole operation.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-hookah" src="./assets/cat-hookah.jpg" shape="rect" placeholder="Product photo — hookah"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">05</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">Hookah</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Hookahs, bowls, hoses, coals, shisha. For long nights that don't go anywhere.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-cbd" src="./assets/cat-cbd.jpg" shape="rect" placeholder="Product photo — CBD / Delta-8 / Kratom"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">06 · WHERE LEGAL · 21+</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">CBD · Delta-8 · Kratom</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Only what Georgia law allows. Stock changes. Ask at the counter — straight answers only.</p></div>
+    </article>
+    <article style="background:#fff;color:#000;border:3px solid #000;display:flex;flex-direction:column">
+      <div style="aspect-ratio:4 / 3;border-bottom:3px solid #000;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="cat-accessories" src="./assets/cat-accessories.jpg" shape="rect" placeholder="Product photo — accessories"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:6px"><div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em">07</div><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:30px;line-height:1.05;text-transform:uppercase">Accessories</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Lighters, grinders, cases, scales, batteries. The stuff you forget until you need it.</p></div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="On the shelf" aria-labelledby="h-shelf" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 02</div>
+    <h2 id="h-shelf" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">On the shelf</h2>
+    <p style="margin:0;max-width:640px;font-family:'Courier Prime', monospace;font-size:17px;text-wrap:pretty">A few things that don't stay long. In-store prices. Call to check stock. 21+ only.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 260px), 1fr));gap:12px">
+    <article style="border:3px solid #fff;display:flex;flex-direction:column">
+      <div style="aspect-ratio:1 / 1;border-bottom:3px solid #fff;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="prod-lighter-case" src="./assets/prod-lighter-case.jpg" shape="rect" placeholder="Product photo — leather lighter case"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:26px;line-height:1.1;text-transform:uppercase">Leather lighter case</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty;flex:1">One damn fine coat. Snaps shut over a standard lighter and keeps the rain out.</p><div style="font-family:Anton, Impact, sans-serif;font-size:36px;line-height:1;color:#ff2d2d">$14.99</div></div>
+    </article>
+    <article style="border:3px solid #fff;display:flex;flex-direction:column;position:relative">
+      <div style="aspect-ratio:1 / 1;border-bottom:3px solid #fff;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="prod-stash-jar" src="./assets/prod-stash-jar.jpg" shape="rect" placeholder="Product photo — stash jar"></image-slot></div>
+      <div aria-hidden="true" style="position:absolute;top:14px;right:14px;z-index:2;pointer-events:none;background:#ffd400;color:#000;border:2px solid #000;padding:4px 10px 4px 20px;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.1em;transform:rotate(6deg)"><span style="position:absolute;left:7px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#000"></span>TYB 069</div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:26px;line-height:1.1;text-transform:uppercase">Smell-proof stash jar</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty;flex:1">Airtight glass, black lid. What goes in stays in. So does the smell.</p><div style="font-family:Anton, Impact, sans-serif;font-size:36px;line-height:1;color:#ff2d2d">$24.99</div></div>
+    </article>
+    <article style="border:3px solid #fff;display:flex;flex-direction:column">
+      <div style="aspect-ratio:1 / 1;border-bottom:3px solid #fff;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="prod-salt-nic" src="./assets/prod-salt-nic.jpg" shape="rect" placeholder="Product photo — salt-nic e-liquid"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:26px;line-height:1.1;text-transform:uppercase">Salt-nic e-liquid, 30ml</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty;flex:1">Smooth hit, clean finish. Pick your strength at the counter.</p><div style="font-family:Anton, Impact, sans-serif;font-size:36px;line-height:1;color:#ff2d2d">$19.99</div></div>
+    </article>
+    <article style="border:3px solid #fff;display:flex;flex-direction:column">
+      <div style="aspect-ratio:1 / 1;border-bottom:3px solid #fff;filter:grayscale(1) contrast(1.7);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="prod-hand-pipe" src="./assets/prod-hand-pipe.jpg" shape="rect" placeholder="Product photo — glass hand pipe"></image-slot></div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:26px;line-height:1.1;text-transform:uppercase">Glass hand pipe</h3><p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty;flex:1">Thick glass. Simple shape. Nothing to explain.</p><div style="font-family:Anton, Impact, sans-serif;font-size:36px;line-height:1;color:#ff2d2d">$29.99</div></div>
+    </article>
+  </div>
+</section>
+
+<section id="deals" data-screen-label="Deals" aria-labelledby="h-deals" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 03</div>
+    <h2 id="h-deals" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">Deals</h2>
+    <p style="margin:0;max-width:640px;font-family:'Courier Prime', monospace;font-size:17px;text-wrap:pretty">Deals change. The prices don't lie.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr));gap:12px">
+    <div style="background:#fff;color:#000;border:3px solid #000;padding:22px;display:flex;flex-direction:column;gap:10px">
+      <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Any 3 e-liquids</div>
+      <div style="font-family:Anton, Impact, sans-serif;font-size:clamp(64px, 12vw, 96px);line-height:0.95;color:#ff2d2d;-webkit-text-stroke:1.5px #000">$45</div>
+      <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Mix and match. 30ml bottles. Tax extra.</p>
+    </div>
+    <div style="background:#fff;color:#000;border:3px solid #000;padding:22px;display:flex;flex-direction:column;gap:10px">
+      <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Glass Tuesday</div>
+      <div style="font-family:Anton, Impact, sans-serif;font-size:clamp(64px, 12vw, 96px);line-height:0.95;color:#ff2d2d;-webkit-text-stroke:1.5px #000">15% OFF</div>
+      <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">All glass, all day Tuesday. One piece per customer.</p>
+    </div>
+    <div style="background:#fff;color:#000;border:3px solid #000;padding:22px;display:flex;flex-direction:column;gap:10px">
+      <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Text club</div>
+      <div style="font-family:Anton, Impact, sans-serif;font-size:clamp(64px, 12vw, 96px);line-height:0.95;color:#ff2d2d;-webkit-text-stroke:1.5px #000">10% OFF</div>
+      <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Join the list and your next visit costs less.</p>
+      <a href="#contact" onClick="{{ go.contact }}" style="align-self:flex-start;font-family:'Courier Prime', monospace;font-weight:700;font-size:16px;color:#000">Sign up below →</a>
+    </div>
+  </div>
+  <p style="margin:0;padding:4px 4px 0;font-family:'Courier Prime', monospace;font-size:14px;text-wrap:pretty">21+ only. While supplies last. Can't be combined. Some rules I make. These I keep.</p>
+</section>
+
+<section id="brands" data-screen-label="Brands" aria-labelledby="h-brands" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 04</div>
+    <h2 id="h-brands" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">Brands</h2>
+    <p style="margin:0;max-width:640px;font-family:'Courier Prime', monospace;font-size:17px;text-wrap:pretty">The names you came for. Stock moves fast. Call before you drive.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(46%, 200px), 1fr));gap:12px">
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-1" src="./assets/brand-1.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-2" src="./assets/brand-2.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-3" src="./assets/brand-3.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-4" src="./assets/brand-4.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-5" src="./assets/brand-5.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-6" src="./assets/brand-6.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-7" src="./assets/brand-7.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+    <div style="background:#fff;border:3px solid #000;aspect-ratio:3 / 2;filter:grayscale(1) contrast(1.7)" style-hover="filter:grayscale(0)"><image-slot id="brand-8" src="./assets/brand-8.svg" shape="rect" fit="contain" placeholder="Brand logo"></image-slot></div>
+  </div>
+</section>
+
+<section id="about" data-screen-label="About" aria-labelledby="h-about" style="border:3px solid #fff;display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr))">
+  <div style="padding:clamp(22px, 4vw, 48px);display:flex;flex-direction:column;gap:16px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 05</div>
+    <h2 id="h-about" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">About</h2>
+    <p style="margin:0;font-size:19px;text-wrap:pretty">This city's got a hundred places to buy a vape. Mine's the one on Cherokee Street with the red sign.</p>
+    <p style="margin:0;font-size:19px;text-wrap:pretty">I'm Ian Alderige. I run Vape City. I keep the shelves stocked, the glass clean and the answers straight. If I don't know, I say so. If it isn't legal here, it isn't on my shelf.</p>
+    <p style="margin:0;font-size:19px;text-wrap:pretty">Walk in. Ask. Walk out with what you came for. Bring ID.</p>
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:16px">— Ian Alderige, owner</div>
+  </div>
+  <div style="min-height:380px;border-left:3px solid #fff;filter:grayscale(1) contrast(1.8);transition:filter .35s" style-hover="filter:grayscale(0) contrast(1.05)"><image-slot id="about-storefront" src="./assets/about-storefront.jpg" shape="rect" placeholder="Storefront photo"></image-slot></div>
+  <div aria-hidden="true" style="grid-column:1 / -1;border-top:3px solid #fff;padding:22px clamp(16px, 4vw, 48px) 0;display:flex;flex-direction:column;gap:0;overflow:hidden">
+    <div style="display:flex;align-items:flex-end;gap:14px;overflow:hidden;height:118px">
+      <div style="flex:none;width:58px;height:54px;border:2px solid #fff;border-radius:4px;display:flex;align-items:center;justify-content:center"><span style="background:#fff;color:#000;font-family:'Courier Prime', monospace;font-weight:700;font-size:9px;padding:1px 3px">COILS</span></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:22px;border:2px solid #fff;border-bottom:0"></div><div style="width:34px;height:74px;border:2px solid #fff;border-radius:10px 10px 2px 2px;display:flex;align-items:center;justify-content:center"><span style="width:100%;background:#fff;height:18px"></span></div></div>
+      <div style="flex:none;width:76px;height:40px;border:2px solid #fff;display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime', monospace;font-weight:700;font-size:10px;letter-spacing:0.1em">PAPERS</span></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center"><div style="width:12px;height:28px;border:2px solid #fff;border-bottom:0"></div><div style="width:38px;height:82px;border:2px solid #fff;border-radius:12px 12px 2px 2px;display:flex;align-items:center;justify-content:center"><span style="background:#2fd05b;color:#000;font-family:'Courier Prime', monospace;font-weight:700;font-size:8px;letter-spacing:0.02em;padding:4px 1px;width:100%;text-align:center">CHANGO</span></div></div>
+      <div style="flex:none;width:30px;height:58px;border:2px solid #fff;border-radius:4px"></div>
+      <div style="flex:none;width:30px;height:58px;border:2px solid #fff;border-radius:4px"></div>
+      <div style="flex:none;width:64px;height:66px;border:2px solid #fff;border-radius:6px 6px 4px 4px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px"><span style="width:44px;height:8px;background:#fff"></span></div>
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center"><div style="width:8px;height:16px;border:2px solid #fff;border-bottom:0"></div><div style="width:28px;height:60px;border:2px solid #fff;border-radius:8px 8px 2px 2px"></div></div>
+      <div style="flex:none;width:90px;height:34px;border:2px solid #fff"></div>
+      <div style="flex:none;width:40px;height:90px;border:2px solid #fff;border-radius:18px 18px 2px 2px"></div>
+      <div style="flex:none;width:58px;height:54px;border:2px solid #fff;border-radius:4px"></div>
+    </div>
+    <div style="height:10px;background:#fff"></div>
+    <div style="font-family:'Courier Prime', monospace;font-size:13px;padding:8px 0 16px">Back shelf. Not for sale. Don't ask.</div>
+  </div>
+</section>
+
+<section id="visit" data-screen-label="Visit Us" aria-labelledby="h-visit" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 06</div>
+    <h2 id="h-visit" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">Visit us</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr));gap:12px">
+    <div style="border:3px solid #fff;min-height:380px;position:relative;overflow:hidden;background:#000">
+      <iframe title="Map to Vape City, 3895 Cherokee St NW, Kennesaw" src="https://www.google.com/maps?q=3895+Cherokee+St+NW+Ste+330,+Kennesaw,+GA+30144&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(1) contrast(1.35)"></iframe>
+    </div>
+    <div style="background:#fff;color:#000;border:3px solid #000;padding:clamp(20px, 3vw, 32px);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Address</div>
+        <div style="font-family:Anton, Impact, sans-serif;font-size:28px;line-height:1.15;text-transform:uppercase">3895 Cherokee St NW, Ste 330<br>Kennesaw, GA 30144</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Hours</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-family:Anton, Impact, sans-serif;font-size:22px;text-transform:uppercase">
+          <span>Mon–Fri</span><span>10am–8pm</span>
+          <span>Sat–Sun</span><span>12pm–8pm</span>
+        </div>
+        <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:15px">{{ openLine }}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="align-self:flex-start;background:#000;color:#fff;font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px">Phone</div>
+        <a href="tel:+16784027463" style="font-family:Anton, Impact, sans-serif;font-size:28px;color:#000;text-decoration:none" style-hover="color:#000;text-decoration:underline">(678) 402-7463</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:auto">
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3895%20Cherokee%20St%20NW%20Ste%20330%2C%20Kennesaw%2C%20GA%2030144" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:56px;padding:12px 22px;background:#ff2d2d;color:#000;border:3px solid #000;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:22px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#000;color:#fff">Get directions</a>
+        <div style="font-family:'Courier Prime', monospace;font-size:14px;text-wrap:pretty">Opens Google Maps with the route from wherever you're standing. It knows where you are. I don't. Tap Start.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" aria-labelledby="h-contact" style="display:grid;gap:12px">
+  <div style="border:3px solid #fff;padding:clamp(22px, 4vw, 40px);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Chapter 07</div>
+    <h2 id="h-contact" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(46px, 9vw, 104px);line-height:0.92;color:#ff2d2d;text-transform:uppercase">Contact</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr));gap:12px">
+    <form onSubmit="{{ submitContact }}" style="background:#fff;color:#000;border:3px solid #000;padding:clamp(20px, 3vw, 32px);display:flex;flex-direction:column;gap:16px;margin:0">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:32px;text-transform:uppercase;line-height:1">Leave a message</h3>
+        <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Stock, hours, special orders. Leave it here. I'll get back to you.</p>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Name
+        <input name="name" type="text" autocomplete="name" required="" style="font-family:Archivo, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:3px solid #000;border-radius:0;background:#fff;color:#000;outline:none;min-height:52px" style-focus="border-color:#ff2d2d">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Phone number
+        <input name="phone" type="tel" autocomplete="tel" inputmode="tel" style="font-family:Archivo, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:3px solid #000;border-radius:0;background:#fff;color:#000;outline:none;min-height:52px" style-focus="border-color:#ff2d2d">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Email address
+        <input name="email" type="email" autocomplete="email" required="" style="font-family:Archivo, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:3px solid #000;border-radius:0;background:#fff;color:#000;outline:none;min-height:52px" style-focus="border-color:#ff2d2d">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Message
+        <textarea name="message" rows="5" required="" style="font-family:Archivo, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:3px solid #000;border-radius:0;background:#fff;color:#000;outline:none;resize:vertical" style-focus="border-color:#ff2d2d"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;min-height:54px;padding:12px 28px;background:#ff2d2d;color:#000;border:3px solid #000;cursor:pointer;font-family:Anton, Impact, sans-serif;font-size:22px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#000;color:#fff">Submit</button>
+      <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#000;color:#fff;padding:12px 14px;font-family:'Courier Prime', monospace;font-weight:700;font-size:16px">Message received. I'll be in touch.</div>
+      </sc-if>
+    </form>
+
+    <form onSubmit="{{ submitSms }}" style="border:3px solid #fff;padding:clamp(20px, 3vw, 32px);display:flex;flex-direction:column;gap:16px;margin:0">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h3 style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:32px;text-transform:uppercase;line-height:1;color:#ff2d2d">Text club</h3>
+        <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Deals by text. Only the good ones. Must be 21+.</p>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase">Mobile number
+        <input name="sms_phone" type="tel" autocomplete="tel" inputmode="tel" required="" placeholder="(678) 555-0100" style="font-family:Archivo, sans-serif;font-size:17px;letter-spacing:0;text-transform:none;font-weight:400;padding:13px 14px;border:3px solid #fff;border-radius:0;background:#000;color:#fff;outline:none;min-height:52px" style-focus="border-color:#ff2d2d">
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:16px;line-height:1.4">
+        <input name="sms_consent" type="checkbox" required="" style="flex:none;width:24px;height:24px;margin:0;accent-color:#ff2d2d;cursor:pointer">
+        <span style="font-weight:600">Yes, text me promotions from Vape City at this number.</span>
+      </label>
+      <p style="margin:0;font-size:14px;line-height:1.5;color:#fff;text-wrap:pretty">By providing your phone number and clicking 'I Agree,' you agree to receive promotional text messages from Vape City at the number provided, including messages sent using automated technology where applicable. Consent is not a condition of purchasing any goods or services. Message and data rates may apply. Message frequency varies. Reply STOP to opt out or HELP for help.</p>
+      <button type="submit" style="align-self:flex-start;min-height:54px;padding:12px 28px;background:#ff2d2d;color:#000;border:3px solid #ff2d2d;cursor:pointer;font-family:Anton, Impact, sans-serif;font-size:22px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff;border-color:#fff">I Agree</button>
+      <sc-if value="{{ smsError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="border:2px solid #ff2d2d;color:#fff;padding:10px 12px;font-family:'Courier Prime', monospace;font-weight:700;font-size:15px">{{ smsError }}</div>
+      </sc-if>
+      <sc-if value="{{ smsDone }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#fff;color:#000;padding:12px 14px;font-family:'Courier Prime', monospace;font-weight:700;font-size:16px">You're on the list. Reply STOP any time to get off it.</div>
+      </sc-if>
+    </form>
+  </div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isLost }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="404" aria-labelledby="h-404" style="border:3px solid #fff;min-height:70vh;padding:clamp(24px, 6vw, 72px);display:flex;flex-direction:column;justify-content:center;gap:24px">
+  <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:14px;letter-spacing:0.22em;text-transform:uppercase">Error 404 · Past the city limits</div>
+  <h2 id="h-404" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(64px, 14vw, 180px);line-height:0.88;color:#ff2d2d;text-transform:uppercase">Wrong turn.</h2>
+  <div style="align-self:flex-start;background:#1f8a44;color:#fff;border:4px solid #fff;outline:3px solid #1f8a44;padding:14px 22px;display:flex;flex-direction:column;gap:2px;transform:rotate(-2deg)">
+    <span style="font-family:Archivo, sans-serif;font-weight:800;font-size:clamp(20px, 4vw, 34px);letter-spacing:0.02em">Santa Yolanda Tar Pits</span>
+    <span style="font-family:Archivo, sans-serif;font-weight:600;font-size:18px">Next exit →</span>
+  </div>
+  <p style="margin:0;max-width:620px;font-size:20px;text-wrap:pretty">This page doesn't exist. Out here nothing does. Just tar, a dirt road, and a couple of concrete dinosaurs who've seen more than they'll ever say.</p>
+  <a href="#top" onClick="{{ go.top }}" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:12px 22px;background:#ff2d2d;color:#000;border:3px solid #000;text-decoration:none;font-family:Anton, Impact, sans-serif;font-size:20px;letter-spacing:0.06em;text-transform:uppercase" style-hover="background:#fff">Back to the city</a>
+</section>
+</sc-if>
+
+<footer style="border:3px solid #fff;padding:clamp(22px, 4vw, 44px);display:flex;flex-direction:column;gap:28px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr));gap:28px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div aria-label="Ian Alderige's Vape City" style="display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:58px;line-height:0.9;margin-top:0.25em;letter-spacing:-0.01em;text-shadow:3px 3px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.22em;line-height:1;letter-spacing:0.02em;text-shadow:1px 1px 0 #000;margin-bottom:1em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;font-size:16px">
+      <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px">Visit</div>
+      <div>3895 Cherokee St NW, Ste 330</div>
+      <div>Kennesaw, GA 30144</div>
+      <a href="tel:+16784027463" style="color:#fff">(678) 402-7463</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;font-size:16px">
+      <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px">Hours</div>
+      <div>Mon–Fri 10am–8pm</div>
+      <div>Sat–Sun 12pm–8pm</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+      <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:#000;border:2px solid #fff;color:#fff;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left">
+        <span style="position:relative;width:46px;height:26px;border:2px solid #fff;flex:none;background:{{ trackBg }}"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;background:{{ knobBg }}"></span></span>
+        <span style="font-family:'Courier Prime', monospace;font-size:14px;line-height:1.3">{{ rainLine }}</span>
+      </button>
+      <div aria-hidden="true" title="Parked out back" style="position:relative;background:#fff;color:#000;border:3px solid #000;outline:2px solid #fff;border-radius:6px;width:132px;padding:6px 0 4px;text-align:center;transform:rotate(-3deg)">
+        <span style="position:absolute;top:5px;left:9px;width:6px;height:6px;border-radius:50%;background:#000"></span>
+        <span style="position:absolute;top:5px;right:9px;width:6px;height:6px;border-radius:50%;background:#000"></span>
+        <div style="font-family:'Courier Prime', monospace;font-weight:700;font-size:26px;letter-spacing:0.08em;line-height:1">LEV 311</div>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:2px solid #fff;padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-family:'Courier Prime', monospace;font-size:14px">
+    <span style="font-weight:700">21+ only. Valid government ID required for every purchase.</span>
+    <span>© 2026 Vape City · Kennesaw, GA · <a href="#/tar-pits" style="color:#fff">Took a wrong turn?</a></span>
+  </div>
+</footer>
+</main>
+
+<sc-if value="{{ showGate }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-labelledby="gate-title" style="position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.94);display:flex;align-items:center;justify-content:center;padding:16px">
+    <div style="width:100%;max-width:480px;background:#000;border:3px solid #fff;padding:clamp(24px, 6vw, 40px);display:flex;flex-direction:column;gap:18px;box-shadow:10px 10px 0 #ff2d2d">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div aria-label="Ian Alderige's Vape City" style="display:flex;flex-direction:column;align-items:flex-start;font-family:'Sin City', Impact, sans-serif;font-weight:400;color:#ff2d2d;font-size:52px;line-height:0.9;margin-top:0.25em;letter-spacing:-0.01em;text-shadow:3px 3px 0 #000">
+        <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;transform:rotate(-7deg);transform-origin:left bottom">
+          <span style="display:block;color:#fff;font-size:0.22em;line-height:1;letter-spacing:0.02em;text-shadow:1px 1px 0 #000;margin-bottom:1em">Ian Alderige's</span>
+          <span style="display:block">VAPE</span>
+        </span>
+        <span aria-hidden="true" style="display:block;transform:rotate(-4deg);transform-origin:left bottom;margin-left:0.28em">CITY</span>
+      </div>
+      </div>
+      <sc-if value="{{ gateAsk }}" hint-placeholder-val="{{ true }}">
+        <h2 id="gate-title" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(38px, 9vw, 52px);line-height:0.95;color:#ff2d2d;text-transform:uppercase">Are you 21 or older?</h2>
+        <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">Nobody under 21 gets through the door. Same goes for the website.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <button type="button" onClick="{{ ageYes }}" style="min-height:56px;background:#ff2d2d;color:#000;border:3px solid #ff2d2d;cursor:pointer;font-family:Anton, Impact, sans-serif;font-size:24px;letter-spacing:0.08em;text-transform:uppercase" style-hover="background:#fff;border-color:#fff">Yes</button>
+          <button type="button" onClick="{{ ageNo }}" style="min-height:56px;background:#000;color:#fff;border:3px solid #fff;cursor:pointer;font-family:Anton, Impact, sans-serif;font-size:24px;letter-spacing:0.08em;text-transform:uppercase" style-hover="background:#fff;color:#000">No</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ under }}" hint-placeholder-val="{{ false }}">
+        <h2 id="gate-title" style="margin:0;font-family:Anton, Impact, sans-serif;font-weight:400;font-size:clamp(38px, 9vw, 52px);line-height:0.95;color:#ff2d2d;text-transform:uppercase">Not yet.</h2>
+        <p style="margin:0;font-family:'Courier Prime', monospace;font-size:16px;text-wrap:pretty">This isn't your town. Not for a while. Come back when you're 21 — the sign will still be red.</p>
+        <button type="button" onClick="{{ ageBack }}" style="align-self:flex-start;background:none;border:0;padding:8px 0;color:#fff;text-decoration:underline;cursor:pointer;font-family:'Courier Prime', monospace;font-size:14px">I answered wrong</button>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;glowSource&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ember&quot;,&quot;neon&quot;],&quot;default&quot;:&quot;ember&quot;,&quot;tsType&quot;:&quot;'ember' | 'neon'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;smokeDensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.3,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;alwaysShowAgeGate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;}}">
+class Component extends DCLogic {
+  rainRef = React.createRef();
+  smokeRef = React.createRef();
+  markRef = React.createRef();
+  state = {
+    ageOk: (() => { try { return localStorage.getItem('vc_age_ok') === '1'; } catch (e) { return false; } })(),
+    under: false, rain: false, route: 'home', now: Date.now(),
+    contactSent: false, smsDone: false, smsError: ''
+  };
+
+  componentDidMount() {
+    this.reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let r = null; try { r = localStorage.getItem('vc_rain'); } catch (e) {}
+    this.setState({
+      rain: r === null ? !this.reduced : r === '1',
+      route: this.routeFromHash(),
+      ageOk: this.props.alwaysShowAgeGate ? false : this.state.ageOk
+    });
+    this.onHash = () => this.setState({ route: this.routeFromHash() }, () => window.scrollTo(0, 0));
+    window.addEventListener('hashchange', this.onHash);
+    this.clock = setInterval(() => this.setState({ now: Date.now() }), 60000);
+    this.t = 0; this.parts = []; this.drops = []; this.flk = 0;
+    this.grain = new Float32Array(65536); for (let i = 0; i < this.grain.length; i++) this.grain[i] = Math.random() * 24 - 12;
+    const sp = document.createElement('canvas'); sp.width = sp.height = 64;
+    const sx = sp.getContext('2d'); const gr = sx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.5, 'rgba(255,255,255,0.45)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+    sx.fillStyle = gr; sx.fillRect(0, 0, 64, 64); this.sprite = sp;
+    const loop = () => { this.raf = requestAnimationFrame(loop); this.t++; this.drawRain(); this.drawHero(); };
+    loop();
+    this.syncBody();
+  }
+  componentDidUpdate(pp) {
+    if (pp.glowSource !== this.props.glowSource || pp.smokeDensity !== this.props.smokeDensity) { this.parts = []; if (this.reduced) this.prewarm(); this.dirty = true; }
+    if (pp.alwaysShowAgeGate !== this.props.alwaysShowAgeGate && this.props.alwaysShowAgeGate) this.setState({ ageOk: false, under: false });
+    this.syncBody();
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf); clearInterval(this.clock);
+    window.removeEventListener('hashchange', this.onHash);
+    document.body.style.overflow = '';
+  }
+  syncBody() { document.body.style.overflow = this.state.ageOk ? '' : 'hidden'; }
+  routeFromHash() { return (location.hash || '').startsWith('#/') ? 'lost' : 'home'; }
+  mode() { return this.props.glowSource === 'neon' ? 'neon' : 'ember'; }
+
+  nav(e, id) {
+    if (e) e.preventDefault();
+    const run = () => {
+      const el = id === 'top' ? null : document.getElementById(id);
+      const y = el ? el.getBoundingClientRect().top + window.scrollY - 68 : 0;
+      window.scrollTo({ top: y, behavior: this.reduced ? 'auto' : 'smooth' });
+    };
+    if (this.state.route !== 'home') {
+      history.replaceState(null, '', location.pathname + location.search);
+      this.setState({ route: 'home' }, () => setTimeout(run, 40));
+    } else run();
+  }
+
+  openInfo() {
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date(this.state.now));
+      const get = (t) => (parts.find(p => p.type === t) || {}).value;
+      const idx = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+      const now = (+get('hour') % 24) + (+get('minute')) / 60;
+      const wk = (d) => d === 0 || d === 6;
+      const open = wk(idx) ? 12 : 10;
+      if (now >= open && now < 20) return { open: true, line: 'Open now · Closes 8pm' };
+      if (now < open) return { open: false, line: 'Closed · Opens ' + (wk(idx) ? '12pm' : '10am') + ' today' };
+      return { open: false, line: 'Closed · Opens ' + (wk((idx + 1) % 7) ? '12pm' : '10am') + ' tomorrow' };
+    } catch (e) { return { open: false, line: 'Mon–Fri 10–8 · Sat–Sun 12–8' }; }
+  }
+
+  /* ---------- rain ---------- */
+  newDrop(w, h, any) {
+    const s = 10 + Math.random() * 10;
+    return { x: Math.random() * (w + h * 0.3), y: any ? Math.random() * h : -20 - Math.random() * 120, vx: -s * 0.28, vy: s, l: 1.1 + Math.random() * 1.7 };
+  }
+  drawRain() {
+    const c = this.rainRef.current; if (!c) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), w = innerWidth, h = innerHeight;
+    if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); this.drops = []; this.rainClear = false; }
+    const ctx = c.getContext('2d');
+    if (!this.state.rain) { if (!this.rainClear) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, c.width, c.height); this.rainClear = true; } return; }
+    this.rainClear = false;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+    const n = Math.round(w * h / 6500);
+    while (this.drops.length < n) this.drops.push(this.newDrop(w, h, true));
+    if (this.drops.length > n) this.drops.length = n;
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1; ctx.beginPath();
+    for (const d of this.drops) {
+      d.x += d.vx; d.y += d.vy;
+      if (d.y > h + 40 || d.x < -40) Object.assign(d, this.newDrop(w, h, false));
+      ctx.moveTo(d.x, d.y); ctx.lineTo(d.x - d.vx * d.l, d.y - d.vy * d.l);
+    }
+    ctx.stroke();
+  }
+
+  /* ---------- hero smoke ---------- */
+  emberPos() { const w = this.hw, h = this.hh; return w < 720 ? { x: w * 0.68, y: h * 0.9 } : { x: w * 0.74, y: h * 0.72 }; }
+  emitters() {
+    const w = this.hw, h = this.hh, s = this.bs;
+    if (this.mode() === 'neon') return [[0.14, 0.9], [0.46, 1.1], [0.8, 1.0]].map(([x, r]) => ({ x: x * w * s, y: h * s * 0.99, r }));
+    const e = this.emberPos(); return [{ x: e.x * s, y: e.y * s, r: 1.6 }];
+  }
+  step() {
+    const t = this.t * 0.012, dens = this.props.smokeDensity ?? 1, sc = Math.max(0.6, this.bh / 180);
+    for (const e of this.emitters()) {
+      let n = Math.floor(e.r * dens + Math.random());
+      while (n-- > 0) this.parts.push({ x: e.x + (Math.random() - 0.5) * 3, y: e.y, vx: (Math.random() - 0.5) * 0.25, vy: -(0.25 + Math.random() * 0.3) * sc, a: 0, m: 240 + Math.random() * 200, r: (9 + Math.random() * 12) * Math.max(0.7, sc * 0.8), k: Math.random() * 6.283 });
+    }
+    const P = this.parts;
+    for (let i = P.length - 1; i >= 0; i--) {
+      const p = P[i];
+      const ang = Math.sin(p.x * 0.04 + t * 1.4 + p.k) * 1.3 + Math.cos(p.y * 0.03 - t) * 1.2;
+      p.vx += Math.cos(ang) * 0.035; p.vy += Math.sin(ang) * 0.012 - 0.0025;
+      p.vx *= 0.985; p.vy *= 0.992; p.x += p.vx; p.y += p.vy; p.a++;
+      if (p.a > p.m || p.y < -40) P.splice(i, 1);
+    }
+  }
+  prewarm() { if (!this.bw) return; for (let i = 0; i < 380; i++) { this.t++; this.step(); } }
+  buildSky(w, h, dpr) {
+    const c = document.createElement('canvas'); c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+    const s = c.getContext('2d'); s.scale(dpr, dpr);
+    let seed = 311; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const mob = w < 720; let x = -8;
+    while (x < w + 8) {
+      const bw = 28 + rnd() * 72, bh = h * (0.07 + rnd() * (mob ? 0.16 : 0.26));
+      const top = h - bh;
+      s.fillStyle = '#000'; s.fillRect(x, top, bw, bh);
+      if (rnd() < 0.18) s.fillRect(x + bw / 2 - 1, top - 16, 2, 16);
+      s.fillStyle = '#fff';
+      for (let yy = top + 7; yy < h - 6; yy += 8) for (let xx = x + 5; xx < x + bw - 7; xx += 7) if (rnd() < 0.3) s.fillRect(xx, yy, 3, 4);
+      x += bw + (rnd() < 0.25 ? 3 : 0);
+    }
+    return c;
+  }
+  drawHero() {
+    const c = this.smokeRef.current; if (!c) { this.hw = 0; return; }
+    const rect = c.getBoundingClientRect(); if (rect.bottom < 0 || rect.top > innerHeight || rect.width < 2) return;
+    const w = Math.round(rect.width), h = Math.round(rect.height), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (w !== this.hw || h !== this.hh || c.width !== Math.round(w * dpr)) {
+      c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); this.hw = w; this.hh = h;
+      const s = Math.min(1, Math.sqrt(52000 / (w * h)));
+      this.bs = s; this.bw = Math.max(1, Math.round(w * s)); this.bh = Math.max(1, Math.round(h * s));
+      this.buf = document.createElement('canvas'); this.buf.width = this.bw; this.buf.height = this.bh;
+      this.bctx = this.buf.getContext('2d', { willReadFrequently: true });
+      this.sky = this.buildSky(w, h, dpr); this.parts = [];
+      if (this.reduced) this.prewarm();
+      this.dirty = true;
+    }
+    if (this.reduced && !this.dirty) return;
+    this.dirty = false;
+    if (!this.reduced) this.step();
+    const b = this.bctx, bw = this.bw, bh = this.bh;
+    b.globalCompositeOperation = 'source-over'; b.globalAlpha = 1; b.fillStyle = '#000'; b.fillRect(0, 0, bw, bh);
+    b.globalCompositeOperation = 'lighter';
+    for (const p of this.parts) {
+      const l = p.a / p.m, rad = p.r * (0.25 + 0.75 * Math.sqrt(l));
+      b.globalAlpha = Math.pow(Math.sin(Math.PI * l), 0.9) * 0.42;
+      b.drawImage(this.sprite, p.x - rad, p.y - rad, rad * 2, rad * 2);
+    }
+    b.globalAlpha = 1; b.globalCompositeOperation = 'source-over';
+    const img = b.getImageData(0, 0, bw, bh), d = img.data, g = this.grain, gl = g.length;
+    for (let i = 0, j = 0; i < d.length; i += 4, j++) {
+      const v = d[i] + g[j % gl];
+      if (v < 92) d[i + 3] = 0;
+      else if ((v > 148 && v < 162) || (v > 212 && v < 222)) { d[i] = d[i + 1] = d[i + 2] = 0; d[i + 3] = 255; }
+      else { d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = 255; }
+    }
+    b.putImageData(img, 0, 0);
+
+    const ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+    ctx.imageSmoothingEnabled = true;
+    if (this.flk > 0) this.flk--; else if (!this.reduced && Math.random() < 0.008) this.flk = 4 + Math.floor(Math.random() * 6);
+    const f = this.flk > 0 ? 0.35 : 0.9 + 0.1 * Math.sin(this.t * 0.07);
+    const tint = (cx, cy, R, alpha) => {
+      ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = alpha;
+      const gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+      gr.addColorStop(0, 'rgb(255,45,45)'); gr.addColorStop(0.55, 'rgb(255,45,45)'); gr.addColorStop(0.8, 'rgb(255,255,255)'); gr.addColorStop(1, 'rgb(255,255,255)');
+      ctx.fillStyle = gr; ctx.fillRect(cx - R, cy - R, R * 2, R * 2);
+      ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = alpha * 0.3;
+      const hz = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+      hz.addColorStop(0, 'rgba(255,45,45,1)'); hz.addColorStop(1, 'rgba(255,45,45,0)');
+      ctx.fillStyle = hz; ctx.fillRect(cx - R, cy - R, R * 2, R * 2);
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+    };
+    if (this.mode() === 'neon') {
+      ctx.drawImage(this.buf, 0, 0, w, h);
+      const m = this.markRef.current;
+      if (m) { const mr = m.getBoundingClientRect(); tint(mr.left - rect.left + mr.width / 2, mr.top - rect.top + mr.height / 2, Math.max(mr.width, mr.height) * 0.85, f); }
+      ctx.drawImage(this.sky, 0, 0, w, h);
+    } else {
+      ctx.drawImage(this.sky, 0, 0, w, h);
+      ctx.drawImage(this.buf, 0, 0, w, h);
+      const e = this.emberPos();
+      tint(e.x, e.y - 20, 90, f);
+      ctx.save(); ctx.translate(e.x, e.y); ctx.rotate(0.28);
+      ctx.fillStyle = '#fff'; ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
+      ctx.fillRect(3, -5, w, 10); ctx.strokeRect(3, -5, w, 10);
+      ctx.fillStyle = '#000'; ctx.fillRect(3, -5, 4, 10);
+      ctx.restore();
+      const pr = (0.92 + 0.12 * Math.sin(this.t * 0.09) + (this.reduced ? 0 : Math.random() * 0.06)) * (this.flk > 0 ? 0.8 : 1);
+      const gl2 = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, 40 * pr);
+      gl2.addColorStop(0, 'rgba(255,45,45,0.95)'); gl2.addColorStop(0.3, 'rgba(255,45,45,0.4)'); gl2.addColorStop(1, 'rgba(255,45,45,0)');
+      ctx.fillStyle = gl2; ctx.fillRect(e.x - 44, e.y - 44, 88, 88);
+      ctx.fillStyle = '#ff2d2d'; ctx.beginPath(); ctx.arc(e.x + 1, e.y, 6.5, 0, 6.283); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(e.x + 1, e.y, 2, 0, 6.283); ctx.fill();
+    }
+  }
+
+  renderVals() {
+    const s = this.state, oi = this.openInfo(), rain = !!s.rain;
+    const go = {};
+    ['top', 'shop', 'brands', 'deals', 'about', 'visit', 'contact'].forEach(k => { go[k] = (e) => this.nav(e, k); });
+    return {
+      rainRef: this.rainRef, smokeRef: this.smokeRef, markRef: this.markRef, go,
+      isHome: s.route === 'home', isLost: s.route === 'lost',
+      openLine: oi.line, statusDot: oi.open ? '#ff2d2d' : '#fff',
+      rainAria: rain ? 'true' : 'false',
+      rainLine: rain ? "Rain's on. Some people like the rain." : "Rain's off. Some people don't.",
+      trackBg: rain ? '#ff2d2d' : '#000', knobBg: rain ? '#000' : '#fff', knobLeft: rain ? '23px' : '3px',
+      toggleRain: () => { const v = !this.state.rain; try { localStorage.setItem('vc_rain', v ? '1' : '0'); } catch (e) {} this.setState({ rain: v }); },
+      showGate: !s.ageOk, gateAsk: !s.under, under: s.under,
+      ageYes: () => { try { if (!this.props.alwaysShowAgeGate) localStorage.setItem('vc_age_ok', '1'); } catch (e) {} this.setState({ ageOk: true }); },
+      ageNo: () => this.setState({ under: true }),
+      ageBack: () => this.setState({ under: false }),
+      contactSent: s.contactSent,
+      submitContact: (e) => { e.preventDefault(); e.target.reset(); this.setState({ contactSent: true }); },
+      smsDone: s.smsDone, smsError: s.smsError,
+      submitSms: (e) => {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const digits = String(f.get('sms_phone') || '').replace(/\D/g, '');
+        if (digits.length < 10) return this.setState({ smsError: 'That number is short a few digits. Try again.', smsDone: false });
+        if (!f.get('sms_consent')) return this.setState({ smsError: 'Check the box first. Rules are rules.', smsDone: false });
+        e.target.reset(); this.setState({ smsError: '', smsDone: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
