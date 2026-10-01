@@ -21,11 +21,18 @@ a { color: #ff2d2d; }
 a:hover { color: #fff; }
 ::selection { background: #ff2d2d; color: #000; }
 input, textarea, button, select { font: inherit; }
+image-slot, image-slot::part(frame), image-slot::part(image) { touch-action: pan-y; }
 @media (max-width: 699px) {
-  .shot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
-  .shot-grid article > div:first-child { aspect-ratio: 1 / 1 !important; }
-  .about-photo { min-height: 0 !important; aspect-ratio: 16 / 10 !important; max-height: 220px; }
+  .shot-grid { grid-template-columns: 1fr !important; justify-items: center; gap: 28px !important; }
+  .shot-grid article { width: min(72vw, 300px); align-items: center; text-align: center; }
+  .shot-grid article > div:first-child { aspect-ratio: 1 / 1 !important; width: 100%; }
+  .about-photo { min-height: 0 !important; aspect-ratio: 16 / 10 !important; max-height: 220px; width: min(86vw, 420px); margin-inline: auto; }
   .brand-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  image-slot::part(image) {
+    object-fit: cover !important; object-position: center center !important;
+    width: 100% !important; height: 100% !important; left: 0 !important; top: 0 !important;
+    transform: none !important; touch-action: pan-y !important;
+  }
 }
 </style>
 </helmet>
@@ -440,14 +447,29 @@ class Component extends DCLogic {
     const loop = () => { this.raf = requestAnimationFrame(loop); this.t++; this.drawRain(); this.drawHero(); };
     loop();
     this.syncBody();
+    this.setupTouchColor();
+  }
+  setupTouchColor() {
+    if (!window.matchMedia || !matchMedia('(hover: none)').matches || !window.IntersectionObserver) return;
+    if (this.io) this.io.disconnect();
+    this.io = new IntersectionObserver((es) => es.forEach(e => {
+      const p = e.target;
+      p.style.setProperty('filter', e.isIntersecting ? 'grayscale(0) contrast(1.05)' : p.dataset.bwFilter, 'important');
+    }), { rootMargin: '-30% 0px -30% 0px' });
+    document.querySelectorAll('image-slot').forEach(s => {
+      const p = s.parentElement; if (!p) return;
+      if (!p.dataset.bwFilter) p.dataset.bwFilter = getComputedStyle(p).filter;
+      this.io.observe(p);
+    });
   }
   componentDidUpdate(pp) {
     if (pp.glowSource !== this.props.glowSource || pp.smokeDensity !== this.props.smokeDensity) { this.parts = []; if (this.reduced) this.prewarm(); this.dirty = true; }
     if (pp.alwaysShowAgeGate !== this.props.alwaysShowAgeGate && this.props.alwaysShowAgeGate) this.setState({ ageOk: false, under: false });
     this.syncBody();
+    if (this.state.route === 'home') setTimeout(() => this.setupTouchColor(), 50);
   }
   componentWillUnmount() {
-    cancelAnimationFrame(this.raf); clearInterval(this.clock);
+    cancelAnimationFrame(this.raf); clearInterval(this.clock); if (this.io) this.io.disconnect();
     window.removeEventListener('hashchange', this.onHash);
     document.body.style.overflow = '';
   }

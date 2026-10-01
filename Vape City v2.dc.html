@@ -23,11 +23,18 @@ a { color: #ebe7e1; }
 a:hover { color: #d42a20; }
 ::selection { background: #d42a20; color: #fff; }
 input, textarea, button, select { font: inherit; }
+image-slot, image-slot::part(frame), image-slot::part(image) { touch-action: pan-y; }
 @media (max-width: 699px) {
-  .hero-frame { height: min(62vh, 440px) !important; }
-  .shot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 12px !important; }
-  .shot-grid article > div:first-child { aspect-ratio: 1 / 1 !important; }
-  .about-photo { aspect-ratio: 16 / 10 !important; max-height: 220px; }
+  .hero-frame { height: min(68vw, 420px) !important; }
+  .shot-grid { grid-template-columns: 1fr !important; justify-items: center; gap: 36px !important; }
+  .shot-grid article { width: min(72vw, 300px); align-items: center; text-align: center; }
+  .shot-grid article > div:first-child { aspect-ratio: 1 / 1 !important; width: 100%; }
+  .about-photo { aspect-ratio: 16 / 10 !important; max-height: 220px; width: min(78vw, 340px); margin-inline: auto; }
+  image-slot::part(image) {
+    object-fit: cover !important; object-position: center center !important;
+    width: 100% !important; height: 100% !important; left: 0 !important; top: 0 !important;
+    transform: none !important; touch-action: pan-y !important;
+  }
 }
 </style>
 </helmet>
@@ -411,7 +418,7 @@ class Component extends DCLogic {
     if (wide === this.wide) return; this.wide = wide;
     Object.assign(this, wide
       ? { IW: 2704, IH: 1158, LIPS: { x: 1490, y: 391 }, TIP: { x: 1396, y: 742 }, PX: 0.5 }
-      : { IW: 1672, IH: 941, LIPS: { x: 686, y: 184 }, TIP: { x: 594, y: 537 }, PX: 0.3 });
+      : { IW: 1672, IH: 941, LIPS: { x: 686, y: 184 }, TIP: { x: 594, y: 537 }, PX: 0.5 });
     this.parts = []; this.flash = null; if (this.reduced) this.prewarm();
   }
 
@@ -682,7 +689,7 @@ class Component extends DCLogic {
     const go = {};
     ['top', 'shop', 'deals', 'about', 'visit', 'contact'].forEach(k => { go[k] = (e) => this.nav(e, k); });
     return {
-      rainRef: this.rainRef, smokeRef: this.smokeRef, go, heroPos: s.narrow ? '30%' : '50%',
+      rainRef: this.rainRef, smokeRef: this.smokeRef, go, heroPos: '50%',
       isHome: s.route === 'home', isLost: s.route === 'lost',
       openLine: oi.line, statusDot: oi.open ? '#3ecf6a' : '#f0a020',
       rainAria: rain ? 'true' : 'false',
