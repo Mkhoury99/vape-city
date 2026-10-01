@@ -23,6 +23,12 @@ a { color: #ebe7e1; }
 a:hover { color: #d42a20; }
 ::selection { background: #d42a20; color: #fff; }
 input, textarea, button, select { font: inherit; }
+@media (max-width: 699px) {
+  .hero-frame { height: min(62vh, 440px) !important; }
+  .shot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 12px !important; }
+  .shot-grid article > div:first-child { aspect-ratio: 1 / 1 !important; }
+  .about-photo { aspect-ratio: 16 / 10 !important; max-height: 220px; }
+}
 </style>
 </helmet>
 <div style="position:relative;min-height:100vh;background:#070707;color:#ebe7e1;font-family:Barlow, 'Helvetica Neue', Helvetica, sans-serif;font-size:17px;line-height:1.55">
@@ -44,7 +50,7 @@ input, textarea, button, select { font: inherit; }
 <main id="top">
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 
-<section data-screen-label="Home" aria-label="Vape City" style="position:relative;height:clamp(580px, 56.25vw, calc(100vh - 96px));overflow:hidden;background:#050505">
+<section class="hero-frame" data-screen-label="Home" aria-label="Vape City" style="position:relative;height:clamp(580px, 56.25vw, calc(100vh - 96px));overflow:hidden;background:#050505">
   <picture><source media="(min-width: 700px)" srcset="./assets/the-customer-wide.webp" type="image/webp"><img src="./assets/the-customer.png" alt="A woman in a red dress smoking on a rain-soaked balcony above the city at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ heroPos }} 50%;display:block"></picture>
   <canvas ref="{{ smokeRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"></canvas>
   <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 58%, rgba(0,0,0,0.88) 100%), radial-gradient(ellipse at 45% 42%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%)"></div>
@@ -102,7 +108,7 @@ input, textarea, button, select { font: inherit; }
     <h2 id="h-shop" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Shop by category</h2>
     <p style="margin:0;max-width:560px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.4;color:#c9c4bd;text-wrap:pretty">Seven aisles. No maze. If it's not on the shelf, ask.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
+  <div class="shot-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
     <article style="display:flex;flex-direction:column;gap:16px">
       <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="cat-vapes" src="./assets/cat-vapes.jpg" shape="rect" placeholder="Product photo — vapes &amp; disposables"></image-slot></div>
       <div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#a8a39c">01</div><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Vapes &amp; Disposables</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty">Pocket-size. No fuss. Rechargeables and disposables, restocked before they run dry.</p></div>
@@ -140,7 +146,7 @@ input, textarea, button, select { font: inherit; }
     <h2 id="h-shelf" style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:clamp(42px, 6.5vw, 84px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">On the shelf</h2>
     <p style="margin:0;max-width:560px;font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:22px;line-height:1.4;color:#c9c4bd;text-wrap:pretty">A few things that don't stay long. In-store prices. Call to check stock.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
+  <div class="shot-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:44px 24px">
     <article style="display:flex;flex-direction:column;gap:16px">
       <div style="aspect-ratio:1 / 1;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.15) brightness(0.88);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="prod-lighter-case" src="./assets/prod-lighter-case.jpg" shape="rect" placeholder="Product photo — leather lighter case"></image-slot></div>
       <div style="display:flex;flex-direction:column;gap:8px;flex:1"><h3 style="margin:0;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:0.03em;text-transform:uppercase">Leather lighter case</h3><p style="margin:0;font-size:16px;color:#a8a39c;text-wrap:pretty;flex:1">One damn fine coat. Snaps shut over a standard lighter and keeps the rain out.</p><div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:30px;line-height:1;color:#e0392e">$14.99</div></div>
@@ -197,7 +203,7 @@ input, textarea, button, select { font: inherit; }
       <p style="margin:0;font-size:18px;color:#c9c4bd;text-wrap:pretty">Walk in. Ask. Walk out with what you came for. Bring ID.</p>
       <div style="font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:15px;letter-spacing:0.2em;text-transform:uppercase;color:#a8a39c">— Ian Alderige, owner</div>
     </div>
-    <div style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.2) brightness(0.85);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="about-storefront" src="./assets/about-storefront.jpg" shape="rect" placeholder="Storefront photo"></image-slot></div>
+    <div class="about-photo" style="aspect-ratio:4 / 5;background:#111;outline:1px solid rgba(255,255,255,0.08);filter:grayscale(1) contrast(1.2) brightness(0.85);transition:filter .5s" style-hover="filter:grayscale(0) contrast(1) brightness(1)"><image-slot id="about-storefront" src="./assets/about-storefront.jpg" shape="rect" placeholder="Storefront photo"></image-slot></div>
   </div>
   <div aria-hidden="true" style="display:flex;flex-direction:column;overflow:hidden">
     <div style="display:flex;align-items:flex-end;gap:14px;overflow:hidden;height:112px;padding:0 6px">
