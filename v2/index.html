@@ -83,7 +83,7 @@ image-slot, image-slot::part(frame), image-slot::part(image) { touch-action: pan
           <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3895%20Cherokee%20St%20NW%20Ste%20330%2C%20Kennesaw%2C%20GA%2030144" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:52px;padding:12px 26px;background:rgba(0,0,0,0.4);color:#ebe7e1;border:1px solid rgba(235,231,225,0.5);text-decoration:none;font-family:'Barlow Condensed', sans-serif;font-weight:600;font-size:17px;letter-spacing:0.18em;text-transform:uppercase;transition:border-color .25s" style-hover="border-color:#ebe7e1;color:#fff">Get directions</a>
         </div>
       </div>
-      <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:rgba(0,0,0,0.45);border:1px solid rgba(235,231,225,0.25);color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
+      <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:transparent;border:0;color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
         <span style="position:relative;width:40px;height:22px;border-radius:11px;flex:none;background:{{ trackBg }};transition:background .25s"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;border-radius:50%;background:#ebe7e1;transition:left .25s"></span></span>
         <span style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:17px;line-height:1.25">{{ rainLine }}</span>
       </button>
@@ -329,7 +329,7 @@ image-slot, image-slot::part(frame), image-slot::part(image) { touch-action: pan
         <div>Sat–Sun 12pm–8pm</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px;align-items:flex-start">
-        <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:transparent;border:1px solid rgba(235,231,225,0.25);color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
+        <button type="button" role="switch" aria-checked="{{ rainAria }}" onClick="{{ toggleRain }}" style="display:flex;align-items:center;gap:12px;background:transparent;border:0;color:#ebe7e1;padding:10px 14px;cursor:pointer;min-height:48px;text-align:left;border-radius:2px">
           <span style="position:relative;width:40px;height:22px;border-radius:11px;flex:none;background:{{ trackBg }};transition:background .25s"><span style="position:absolute;top:3px;left:{{ knobLeft }};width:16px;height:16px;border-radius:50%;background:#ebe7e1;transition:left .25s"></span></span>
           <span style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;font-size:16px;line-height:1.25">{{ rainLine }}</span>
         </button>
